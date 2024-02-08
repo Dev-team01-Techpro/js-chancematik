@@ -194,3 +194,7 @@ body {
 .lists .participant-day-list {
   width: 100%;
 }
+.lists .participant-list .participant-title,
+.lists .participant-day-list .participant-title {
+  text-align: center;
+}

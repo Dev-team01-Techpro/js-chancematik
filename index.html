@@ -28,11 +28,11 @@
       </div>
     </header>
     <div class="add-participant">
-        <form class="box">
-            <i class="fa-solid fa-xmark" onclick="exitBox()"></i>
-            <input class="input-text" type="text" placeholder="Full Name" />
-            <input class="btn input-submit" type="submit" value="Submit">
-        </form>
+      <div class="box">
+        <i class="fa-solid fa-xmark" onclick="exitBox()"></i>
+        <input class="input-text" type="text" placeholder="Full Name" />
+        <input class="btn input-submit" type="submit" value="Submit" />
+      </div>
     </div>
     <aside class="day-list">
       <div class="day-item">
@@ -40,7 +40,7 @@
         <label for="pazartesi"> Pazartesi</label>
       </div>
       <div class="day-item">
-        <input class="checkmark" type="checkbox" id="sali" checked  />
+        <input class="checkmark" type="checkbox" id="sali" checked />
         <label for="sali">Salı</label>
       </div>
       <div class="day-item">
@@ -67,32 +67,41 @@
     </aside>
     <main class="container">
       <div class="winner-container">
-        <div class="winner">Kazanan: <span>Eda</span></div>
+        <div class="winner">Kazanan: <span class="winnerName">Eda</span></div>
       </div>
       <hr />
+      <!-- Sule  -->
       <div class="lists">
-        <div class="participant-list">sol</div>
-        <div class="participant-day-list">sag</div>
+        <div class="participant-list">
+          <div class="participant-title">Katilimci Listesi</div>
+          <div class="participant-body">
+            Kisileri listele
+            <div>
+              Kisi sil - id ye gore <i class="fa-solid fa-user-xmark"></i>
+            </div>
+            <div>
+              Guncelle - id ye gore <i class="fa-solid fa-user-pen"></i>
+            </div>
+          </div>
+        </div>
+        <div class="participant-day-list">
+          <div class="participant-title">Katilimci-Gün Dağilimi</div>
+          <div class="participant-body">
+            Kisileri sirali gunlere dagit
+            <div>
+              Kisi sil - id ye gore <i class="fa-solid fa-user-xmark"></i>
+            </div>
+            <div>
+              Guncelle - id ye gore <i class="fa-solid fa-user-pen"></i>
+            </div>
+          </div>
+        </div>
       </div>
+      <!-- Sule  -->
       <br />
-      <br />
-      <br />
-      <br />
+
       <hr />
-      <br />
-      <br />
-      <br />
-      <div>Katilimcilarin listesi <i class="fa-solid fa-bars"></i></div>
-      <div>
-        - Kisi ekle - Isim Soyisim <i class="fa-solid fa-user-plus"></i>
-      </div>
-      <div>Kisi sil - id ye gore <i class="fa-solid fa-user-xmark"></i></div>
-      <div>Guncelle - id ye gore <i class="fa-solid fa-user-pen"></i></div>
-      <div>Random kisi secerek cekilis</div>
-      <div>Kisileri sirali gunlere dagit</div>
-      <div>Gunlerin oldugu checkboxlar 6 gun secili varsayilan</div>
-      <div>tab ozellikleri</div>
-    </maı>
+    </main>
     <script src="./assets/js/app.js"></script>
   </body>
 </html>

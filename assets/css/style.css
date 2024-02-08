@@ -12,14 +12,16 @@ a {
   text-decoration: none;
 }
 :root {
-  --primary-color: #3498db;
+  --btn-color: #3498db;
+  --btn-color-hover: #177abb;
   --secondary-color: #2ecc71;
   --dark-green-color: #07833b;
-  --dark-color: #333;
   --grey-color: #444;
   --beige-color: #f5f5dc;
-  --bg-color: #63b1e6;
-  --text-color: #e3e3e3;
+
+  --yellow--color: #fedc56;
+  --bg-color: #fafafa;
+  --text-color: #3d3d3d;
 }
 body {
   background-color: var(--bg-color);
@@ -31,15 +33,26 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-/* .btn {
-  background-color: red;
+.btn {
+  background-color: var(--btn-color);
+  color: var(--bg-color);
+  font-weight: bold;
   padding: 10px 20px;
-} */
+  border: 0;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+}
+.btn:hover {
+  background-color: var(--btn-color-hover);
+}
 .header {
   height: 60px;
-  background-color: var(--secondary-color);
-  color: var(--dark-color);
+  background-color: var(--text-color);
+  color: var(--bg-color);
   user-select: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .header .menu {
   display: flex;
@@ -50,6 +63,7 @@ body {
 .header .menu .logo {
   font-size: 1.5rem;
   font-weight: 700;
+  color: var(--yellow--color);
 }
 .header .menu .logo img {
   height: 60px;
@@ -70,13 +84,13 @@ body {
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 .header .menu .navbar .nav-item:hover {
-  background-color: var(--dark-green-color);
-  color: var(--beige-color);
+  background-color: var(--yellow--color);
+  color: var(--text-color);
 }
 .add-participant {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   background-color: #0000006a;
   z-index: 9999;
   top: 0;
@@ -88,7 +102,8 @@ body {
 .add-participant .box {
   height: 150px;
   width: 200px;
-  background-color: var(--grey-color);
+  background-color: var(--text-color);
+  color: var(--bg-color);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -123,36 +138,37 @@ body {
   border-radius: 5px;
   outline: none;
 }
-.add-participant .box .input-submit {
-  cursor: pointer;
-  font-weight: 700;
-  transition: background-color 0.5s ease;
-  border: 0;
-}
-.add-participant .box .input-submit:hover {
-  background-color: var(--beige-color);
-}
 .day-list {
   position: fixed;
   right: 5%;
   top: 50%;
   transform: translate(0, -50%);
   z-index: 999;
-  background-color: var(--grey-color);
-  padding: 1rem;
-  border-radius: 15px;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.day-list .day-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
 }
 .winner-container {
   overflow: hidden;
-  /* border: 3px solid red; */
   display: flex;
   justify-content: center;
   position: relative;
   height: 4rem;
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 .winner-container .winner {
-  background-color: #333;
+  background-color: var(--text-color);
+  color: var(--yellow--color);
   padding: 1rem 2rem;
   width: fit-content;
   font-weight: 700;
@@ -165,8 +181,16 @@ body {
   bottom: 0;
 }
 .lists {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 200px;
+  margin-top: 10px;
 }
 .lists .participant-list {
+  width: 100%;
+  border-right: 3px solid silver;
 }
 .lists .participant-day-list {
+  width: 100%;
 }

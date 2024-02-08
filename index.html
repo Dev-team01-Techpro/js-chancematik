@@ -13,7 +13,7 @@
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
-  <body class="darkbg">
+  <body>
     <header class="header">
       <div class="container menu">
         <div class="logo">Chancematik</div>
@@ -21,9 +21,9 @@
           <img src="./assets/img/logo.gif" alt="Chancematik Logo" />
         </div> -->
         <navbar class="navbar">
-          <div class="btn nav-item" onclick="cekilis()">Çekiliş Yap</div>
-          <div class="btn nav-item">Günlere Dağıt</div>
-          <div class="btn nav-item" onclick="addPart()">Katılımcı Ekle</div>
+          <div class="nav-item" onclick="cekilis()">Çekiliş Yap</div>
+          <div class="nav-item">Günlere Dağıt</div>
+          <div class="nav-item" onclick="addPart()">Katılımcı Ekle</div>
         </navbar>
       </div>
     </header>
@@ -31,22 +31,45 @@
         <form class="box">
             <i class="fa-solid fa-xmark" onclick="exitBox()"></i>
             <input class="input-text" type="text" placeholder="Full Name" />
-            <input class="input-submit" type="submit" value="Submit">
+            <input class="btn input-submit" type="submit" value="Submit">
         </form>
     </div>
     <aside class="day-list">
-      <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-      <label for="vehicle1"> Pazartesi</label><br />
-      <input type="checkbox" id="vehicle2" name="vehicle2" value="Car" />
-      <label for="vehicle2"> Salı</label><br />
-      <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat" />
-      <label for="vehicle3"> Çarşamba</label><br /><br />
-      <input type="submit" value="Submit" />
+      <div class="day-item">
+        <input type="checkbox" id="pazartesi" checked />
+        <label for="pazartesi"> Pazartesi</label>
+      </div>
+      <div class="day-item">
+        <input class="checkmark" type="checkbox" id="sali" checked  />
+        <label for="sali">Salı</label>
+      </div>
+      <div class="day-item">
+        <input class="checkmark" type="checkbox" id="carsamba" checked />
+        <label for="carsamba">Çarşamba</label>
+      </div>
+      <div class="day-item">
+        <input class="checkmark" type="checkbox" id="persembe" checked />
+        <label for="persembe">Parşembe</label>
+      </div>
+      <div class="day-item">
+        <input class="checkmark" type="checkbox" id="cuma" checked />
+        <label for="cuma">Cuma</label>
+      </div>
+      <div class="day-item">
+        <input class="checkmark" type="checkbox" id="cumartesi" checked />
+        <label for="cumartesi">Cumartesi</label>
+      </div>
+      <div class="day-item">
+        <input class="checkmark" type="checkbox" id="pazar" />
+        <label for="pazar">Pazar</label>
+      </div>
+      <input class="btn" type="submit" value="Submit" />
     </aside>
     <main class="container">
       <div class="winner-container">
         <div class="winner">Kazanan: <span>Eda</span></div>
       </div>
+      <hr />
       <div class="lists">
         <div class="participant-list">sol</div>
         <div class="participant-day-list">sag</div>

@@ -5,22 +5,22 @@ const winnerName = document.querySelector(".winnerName");
 const fullName = document.querySelector(".input-text");
 
 let participantList = {
-  "1":"Sinan",
-  "2":"Eda",
-  "3":"Sule"
-}
+  1: "Sinan",
+  2: "Eda",
+  3: "Sule",
+};
 
 // Mehmet
-function getRandomNumber(){
- //Listedeki sayilarin random numarasini getir
-//  return kisinin keyi
+function getRandomNumber() {
+  //Listedeki sayilarin random numarasini getir
+  //  return kisinin keyi
 }
 // Mehmet
 
 // Emrullah
 function cekilis() {
   winner.classList.add("active");
-  let kisininKeyi = getRandomNumber()
+  let kisininKeyi = getRandomNumber();
   // kisiler.kisininKeyi
   // winnerName.innerText = "Sinan";
 
@@ -51,4 +51,24 @@ function exitBox() {
 
 // Eda
 // Gunlere dagit foknsiyonu
-// DayCheck() 
+
+const randomNumber = (max) => {
+  let i = 0;
+  let arr = [];
+
+  while (i + 1 <= max) {
+    let randomN = Math.floor(Math.random() * max) + 1;
+
+    if (randomN != 0 && !arr.includes(randomN)) {
+      arr.push(randomN);
+
+      i++;
+    }
+  }
+  console.log(arr);
+};
+
+console.log("sonlandı");
+randomNumber(5);
+
+const matchUp = (params) => {};

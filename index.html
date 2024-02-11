@@ -1,107 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cekilis Uygulamasi</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
-  <body>
-    <header class="header">
-      <div class="container menu">
-        <div class="logo">Chancematik</div>
-        <!-- <div class="logo">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cekilis Uygulamasi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <div class="container menu">
+      <div class="logo">Chancematik</div>
+      <!-- <div class="logo">
           <img src="./assets/img/logo.gif" alt="Chancematik Logo" />
         </div> -->
-        <navbar class="navbar">
-          <div class="nav-item" onclick="cekilis()">Çekiliş Yap</div>
-          <div class="nav-item">Günlere Dağıt</div>
-          <div class="nav-item" onclick="addPart()">Katılımcı Ekle</div>
-        </navbar>
+      <navbar class="navbar">
+        <div class="nav-item" onclick="cekilis()">Çekiliş Yap</div>
+        <div class="nav-item">Günlere Dağıt</div>
+        <div class="nav-item" onclick="addPart()">Katılımcı Ekle</div>
+      </navbar>
+    </div>
+  </header>
+  <div class="add-participant">
+    <div class="box">
+      <i class="fa-solid fa-xmark" onclick="exitBox()"></i>
+      <input class="input-text" type="text" placeholder="Full Name" />
+      <input class="btn input-submit" type="submit" value="Submit" />
+    </div>
+  </div>
+  <aside class="day-list">
+    <div class="day-item">
+      <input type="checkbox" id="pazartesi" checked />
+      <label for="pazartesi"> Pazartesi</label>
+    </div>
+    <div class="day-item">
+      <input class="checkmark" type="checkbox" id="sali" checked />
+      <label for="sali">Salı</label>
+    </div>
+    <div class="day-item">
+      <input class="checkmark" type="checkbox" id="carsamba" checked />
+      <label for="carsamba">Çarşamba</label>
+    </div>
+    <div class="day-item">
+      <input class="checkmark" type="checkbox" id="persembe" checked />
+      <label for="persembe">Parşembe</label>
+    </div>
+    <div class="day-item">
+      <input class="checkmark" type="checkbox" id="cuma" checked />
+      <label for="cuma">Cuma</label>
+    </div>
+    <div class="day-item">
+      <input class="checkmark" type="checkbox" id="cumartesi" checked />
+      <label for="cumartesi">Cumartesi</label>
+    </div>
+    <div class="day-item">
+      <input class="checkmark" type="checkbox" id="pazar" />
+      <label for="pazar">Pazar</label>
+    </div>
+    <input class="btn" type="submit" value="Submit" />
+  </aside>
+  <main class="container">
+    <div class="winner-container">
+      <div class="winner">Kazanan: <span class="winnerName">Eda</span></div>
+    </div>
+    <hr />
+    <!-- Sule  -->
+    <div class="lists">
+      <div class="participant-list">
+        <div class="participant-title">Katılımcı Listesi</div>
+        <div class="participant-body">
+          <div class="participant" id="participant-1">
+            <span class="participant-name">
+              Sule Demir
+            </span>
+            <div class="participant-icon">
+              <i class="fa-solid fa-user-pen" id="user-pen" onclick="updateParticipant()"></i>
+              <i class="fa-solid fa-user-xmark" id="xmark" onclick="removeParticipant()"></i>
+            </div>
+          </div>
+
+          <br>
+          <div class="participant" id="participant-2">
+            <span class="participant-name">
+              Sinan Sarikaya
+            </span>
+            <div class="participant-icon">
+              <i class="fa-solid fa-user-pen" id="user-pen" onclick="updateParticipant()"></i>
+              <i class="fa-solid fa-user-xmark" id="xmark" onclick="removeParticipant()"></i>
+            </div>
+          </div>
+          <br>
+
+          <div class="participant" id="participant-3">
+            <span class="participant-name">
+              Tuba Göçmek
+            </span>
+            <div class="participant-icon">
+              <i class="fa-solid fa-user-pen" id="user-pen" onclick="updateParticipant()"></i>
+              <i class="fa-solid fa-user-xmark" id="xmark" onclick="removeParticipant()"></i>
+            </div>
+          </div>
+        </div>
       </div>
-    </header>
-    <div class="add-participant">
-      <div class="box">
-        <i class="fa-solid fa-xmark" onclick="exitBox()"></i>
-        <input class="input-text" type="text" placeholder="Full Name" />
-        <input class="btn input-submit" type="submit" value="Submit" />
+      <div class="participant-day-list">
+        <div class="participanttitle">Katılımcı-Gün Dağılımı</div>
+        <div class="participant-body">
+          <div class="participant" id="participant-1">
+            <span class="participant-name">
+              Pazartesi
+            </span>
+            <div class="participant-icon">
+              <i class="fa-solid fa-user-pen" id="user-pen" onclick="updateParticipant()"></i>
+              <i class="fa-solid fa-user-xmark" id="xmark" onclick="removeParticipant()"></i>
+            </div>
+          </div>
+
+          <br>
+          <div class="participant" id="participant-2">
+            <span class="participant-name">
+              Salı
+            </span>
+            <div class="participant-icon">
+              <i class="fa-solid fa-user-pen" id="user-pen" onclick="updateParticipant()"></i>
+              <i class="fa-solid fa-user-xmark" id="xmark" onclick="removeParticipant()"></i>
+            </div>
+          </div>
+          <br>
+
+          <div class="participant" id="participant-3">
+            <span class="participant-name">
+              Çarşamba
+            </span>
+            <div class="participant-icon">
+              <i class="fa-solid fa-user-pen" id="user-pen" onclick="updateParticipant()"></i>
+              <i class="fa-solid fa-user-xmark" id="xmark" onclick="removeParticipant()"></i>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <aside class="day-list">
-      <div class="day-item">
-        <input type="checkbox" id="pazartesi" checked />
-        <label for="pazartesi"> Pazartesi</label>
-      </div>
-      <div class="day-item">
-        <input class="checkmark" type="checkbox" id="sali" checked />
-        <label for="sali">Salı</label>
-      </div>
-      <div class="day-item">
-        <input class="checkmark" type="checkbox" id="carsamba" checked />
-        <label for="carsamba">Çarşamba</label>
-      </div>
-      <div class="day-item">
-        <input class="checkmark" type="checkbox" id="persembe" checked />
-        <label for="persembe">Parşembe</label>
-      </div>
-      <div class="day-item">
-        <input class="checkmark" type="checkbox" id="cuma" checked />
-        <label for="cuma">Cuma</label>
-      </div>
-      <div class="day-item">
-        <input class="checkmark" type="checkbox" id="cumartesi" checked />
-        <label for="cumartesi">Cumartesi</label>
-      </div>
-      <div class="day-item">
-        <input class="checkmark" type="checkbox" id="pazar" />
-        <label for="pazar">Pazar</label>
-      </div>
-      <input class="btn" type="submit" value="Submit" />
-    </aside>
-    <main class="container">
-      <div class="winner-container">
-        <div class="winner">Kazanan: <span class="winnerName">Eda</span></div>
-      </div>
-      <hr />
-      <!-- Sule  -->
-      <div class="lists">
-        <div class="participant-list">
-          <div class="participant-title">Katilimci Listesi</div>
-          <div class="participant-body">
-            Kisileri listele
-            <div>
-              Kisi sil - id ye gore <i class="fa-solid fa-user-xmark"></i>
-            </div>
-            <div>
-              Guncelle - id ye gore <i class="fa-solid fa-user-pen"></i>
-            </div>
-          </div>
-        </div>
-        <div class="participant-day-list">
-          <div class="participant-title">Katilimci-Gün Dağilimi</div>
-          <div class="participant-body">
-            Kisileri sirali gunlere dagit
-            <div>
-              Kisi sil - id ye gore <i class="fa-solid fa-user-xmark"></i>
-            </div>
-            <div>
-              Guncelle - id ye gore <i class="fa-solid fa-user-pen"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Sule  -->
-      <br />
+    </div>
+    </div>
+    <!-- Sule  -->
+    <br />
 
-      <hr />
-    </main>
-    <script src="./assets/js/app.js"></script>
-  </body>
+    <hr />
+  </main>
+  <script src="./assets/js/app.js"></script>
+</body>
+
 </html>

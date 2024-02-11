@@ -5,31 +5,34 @@ const winnerName = document.querySelector(".winnerName");
 const fullName = document.querySelector(".input-text");
 
 let participantList = {
-  "1":"Sinan",
-  "2":"Eda",
-  "3":"Sule"
-}
+  1: "Sinan",
+  2: "Eda",
+  3: "Sule",
+};
 
 // Mehmet
-function getRandomNumber(){
- //Listedeki sayilarin random numarasini getir
-//  return kisinin keyi
+function getRandomNumber() {
+  //Listedeki sayilarin random numarasini getir
+  //  return kisinin keyi
 }
 // Mehmet
 
 // Emrullah
-function cekilis() {
+const raffle = () => {
   winner.classList.add("active");
-  let kisininKeyi = getRandomNumber()
-  // kisiler.kisininKeyi
-  // winnerName.innerText = "Sinan";
 
+  //const personKey = getRandomNumber(participantList,1);
+
+  const name = participantList[1]; //participantList[personKey];
+  winnerName.innerHTML = name;
+  //console.log(name);
   setTimeout(() => {
     winner.classList.remove("active");
   }, 5000);
-}
+};
+//raffle();
 // Emrullah
-
+// git add .  git commit -m "asdasd" git push -u origin lottery
 // Tuba
 // fullName value degerini participantList'e ekle
 function addPart() {
@@ -51,4 +54,4 @@ function exitBox() {
 
 // Eda
 // Gunlere dagit foknsiyonu
-// DayCheck() 
+// DayCheck()

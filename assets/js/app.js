@@ -33,8 +33,8 @@ const getRandomNumber = (obj, type) => {
 
 console.log(getRandomNumber(participantList, 1));
 console.log(getRandomNumber(participantList, 2));
-
 //----------------MEHMET-----------------------------
+
 //----------------Emrullah---------------------------
 // raffleInp.addEventListener
 const raffle = () => {
@@ -74,6 +74,42 @@ function exitBox() {
 
 // Eda
 // Gunlere dagit foknsiyonu
+
+const randomNumber = (max) => {
+  let i = 0;
+  let arr = [];
+
+  while (i + 1 <= max) {
+    let randomN = Math.floor(Math.random() * max) + 1;
+
+    if (randomN != 0 && !arr.includes(randomN)) {
+      arr.push(randomN);
+
+      i++;
+    }
+  }
+ return arr;
+};
+
+
+const matchUp = () => {
+  
+let days=["pazartesi", "sali","çarşamba","persembe","cuma"];
+
+  let arrMatch = randomNumber(9);
+
+  for(let i=0; i<days.length; i++){
+    days[i]=arrMatch[i];
+
+    console.log(days[i])
+  }
+console.log(days)
+
+
+};
+
+matchUp()
+
 // DayCheck()
 
 const participantBody = document.querySelector(".participant-body");
@@ -81,3 +117,4 @@ const participantBody = document.querySelector(".participant-body");
 participantBody.addEventListener("click", (e) => {
   console.log(e.target.id);
 });
+

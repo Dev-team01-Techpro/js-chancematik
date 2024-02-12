@@ -22,6 +22,8 @@ a {
   --yellow--color: #fedc56;
   --bg-color: #fafafa;
   --text-color: #3d3d3d;
+  --icon-hover:#9f0505;
+  --icon-color: #bc2a2a;
 }
 body {
   background-color: var(--bg-color);
@@ -190,11 +192,49 @@ body {
 .lists .participant-list {
   width: 100%;
   border-right: 3px solid silver;
+  padding-right: 10px;
+  
+}
+.lists .participant-list .participant-body .participant {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid silver;
+}
+.lists .participant-day-list .participant-body .participant {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid silver;
+ 
 }
 .lists .participant-day-list {
   width: 100%;
 }
 .lists .participant-list .participant-title,
-.lists .participant-day-list .participant-title {
+.lists .participant-day-list .participanttitle {
   text-align: center;
+  border-bottom: 15px;
+  font-weight:bold;
+  gap: 3px;   
+}
+.lists .participant-list .participant-title:hover {
+  color: var(--bg-color);
+  background-color: var(--text-color);
+}
+.lists .participant-day-list .participanttitle:hover {
+   color: var(--bg-color);
+   background-color: var(--text-color);
+}
+.lists .participant-icon #xmark{
+   color: var(--icon-color); 
+}
+.lists .participant-icon #xmark:hover{
+  color: var(--icon-hover);
+}
+.lists .participant-icon #user-pen{  
+  color: var(--secondary-color);
+}
+.lists .participant-icon #user-pen:hover{
+  color: var(--dark-green-color);
 }

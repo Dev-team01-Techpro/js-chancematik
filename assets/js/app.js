@@ -3,32 +3,55 @@ const addParticipant = document.querySelector(".add-participant");
 const box = document.querySelector(".box");
 const winnerName = document.querySelector(".winnerName");
 const fullName = document.querySelector(".input-text");
+const raffleInp = document.querySelector(".raffle");
 
 let participantList = {
   1: "Sinan",
   2: "Eda",
   3: "Sule",
+  4: "Tuba",
+  5: "Mehmet",
+  6: "Cahit",
+  7: "Emrullah",
+  8: "Asiye",
 };
 
-// Mehmet
-function getRandomNumber() {
-  //Listedeki sayilarin random numarasini getir
-  //  return kisinin keyi
-}
-// Mehmet
+//----------------MEHMET-----------------------------
+const getRandomNumber = (obj, type) => {
+  if (type === 1) {
+    const keys = Object.keys(obj);
+    const randomIndex = Math.floor(Math.random() * keys.length);
+    return keys[randomIndex];
+  } else if (type === 2) {
+    const keys = Object.keys(obj);
 
-// Emrullah
-function cekilis() {
+    keys.sort(() => Math.random() - 0.5);
+
+    return keys;
+  }
+};
+
+console.log(getRandomNumber(participantList, 1));
+console.log(getRandomNumber(participantList, 2));
+//----------------MEHMET-----------------------------
+
+//----------------Emrullah---------------------------
+// raffleInp.addEventListener
+const raffle = () => {
   winner.classList.add("active");
-  let kisininKeyi = getRandomNumber();
   // kisiler.kisininKeyi
   // winnerName.innerText = "Sinan";
 
+  let kisininKeyi = getRandomNumber(participantList, 1);
+
+  winnerName.innerText = kisininKeyi;
+  //console.log(name);
   setTimeout(() => {
     winner.classList.remove("active");
   }, 5000);
-}
-// Emrullah
+};
+// raffle();
+//----------------Emrullah---------------------------
 
 // Tuba
 // fullName value degerini participantList'e ekle
@@ -86,3 +109,12 @@ console.log(days)
 };
 
 matchUp()
+
+// DayCheck()
+
+const participantBody = document.querySelector(".participant-body");
+
+participantBody.addEventListener("click", (e) => {
+  console.log(e.target.id);
+});
+

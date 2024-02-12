@@ -8,31 +8,50 @@ let participantList = {
   1: "Sinan",
   2: "Eda",
   3: "Sule",
+  4: "Tuba",
+  5: "Mehmet",
+  6: "Cahit",
+  7: "Emrullah",
+  8: "Asiye",
+ };
+
+//----------------MEHMET-----------------------------
+const randomCreate = (obj, type) => {
+  if (type === 1) {
+    const keys = Object.keys(obj);
+    const randomIndex = Math.floor(Math.random() * keys.length);
+    return keys[randomIndex];
+  } else if (type === 2) {
+    const keys = Object.keys(obj);
+
+    keys.sort(() => Math.random() - 0.5);
+
+    return keys;
+  }
 };
 
-// Mehmet
-function getRandomNumber() {
-  //Listedeki sayilarin random numarasini getir
-  //  return kisinin keyi
-}
-// Mehmet
+console.log(randomCreate(participantList, 1));
+console.log(randomCreate(participantList, 2));
 
-// Emrullah
+const getRandomNumber = (obj, type) => {
+  randomCreate(obj, type);
+};
+//----------------MEHMET-----------------------------
+
+//----------------Emrullah---------------------------
 const raffle = () => {
   winner.classList.add("active");
 
-  //const personKey = getRandomNumber(participantList,1);
-
-  const name = participantList[1]; //participantList[personKey];
-  winnerName.innerHTML = name;
+  let kisininKeyi = getRandomNumber(participantList, 1);
+  
+  winnerName.innerText = kisininKeyi;
   //console.log(name);
   setTimeout(() => {
     winner.classList.remove("active");
   }, 5000);
 };
-//raffle();
-// Emrullah
-// git add .  git commit -m "asdasd" git push -u origin lottery
+//----------------Emrullah---------------------------
+
 // Tuba
 // fullName value degerini participantList'e ekle
 function addPart() {

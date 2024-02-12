@@ -3,6 +3,7 @@ const addParticipant = document.querySelector(".add-participant");
 const box = document.querySelector(".box");
 const winnerName = document.querySelector(".winnerName");
 const fullName = document.querySelector(".input-text");
+const raffleInp = document.querySelector(".raffle");
 
 let participantList = {
   1: "Sinan",
@@ -13,10 +14,10 @@ let participantList = {
   6: "Cahit",
   7: "Emrullah",
   8: "Asiye",
- };
+};
 
 //----------------MEHMET-----------------------------
-const randomCreate = (obj, type) => {
+const getRandomNumber = (obj, type) => {
   if (type === 1) {
     const keys = Object.keys(obj);
     const randomIndex = Math.floor(Math.random() * keys.length);
@@ -30,26 +31,24 @@ const randomCreate = (obj, type) => {
   }
 };
 
-console.log(randomCreate(participantList, 1));
-console.log(randomCreate(participantList, 2));
+console.log(getRandomNumber(participantList, 1));
+console.log(getRandomNumber(participantList, 2));
 
-const getRandomNumber = (obj, type) => {
-  randomCreate(obj, type);
-};
 //----------------MEHMET-----------------------------
-
 //----------------Emrullah---------------------------
+// raffleInp.addEventListener
 const raffle = () => {
   winner.classList.add("active");
 
   let kisininKeyi = getRandomNumber(participantList, 1);
-  
+
   winnerName.innerText = kisininKeyi;
   //console.log(name);
   setTimeout(() => {
     winner.classList.remove("active");
   }, 5000);
 };
+// raffle();
 //----------------Emrullah---------------------------
 
 // Tuba

@@ -65,10 +65,24 @@ const randomNumber = (max) => {
       i++;
     }
   }
-  console.log(arr);
+ return arr;
 };
 
-console.log("sonlandı");
-randomNumber(5);
 
-const matchUp = (params) => {};
+const matchUp = () => {
+  
+let days=["pazartesi", "sali","çarşamba","persembe","cuma"];
+
+  let arrMatch = randomNumber(9);
+
+  for(let i=0; i<days.length; i++){
+    days[i]=arrMatch[i];
+
+    console.log(days[i])
+  }
+console.log(days)
+
+
+};
+
+matchUp()

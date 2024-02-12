@@ -13,7 +13,7 @@ let participantList = {
   6: "Cahit",
   7: "Emrullah",
   8: "Asiye",
-};
+ };
 
 //----------------MEHMET-----------------------------
 const randomCreate = (obj, type) => {
@@ -33,28 +33,24 @@ const randomCreate = (obj, type) => {
 console.log(randomCreate(participantList, 1));
 console.log(randomCreate(participantList, 2));
 
-// Mehmet
 const getRandomNumber = (obj, type) => {
   randomCreate(obj, type);
-
-  //Listedeki sayilarin random numarasini getir
-  //  return kisinin keyi
 };
-// Mehmet
 //----------------MEHMET-----------------------------
 
-// Emrullah
-function cekilis() {
+//----------------Emrullah---------------------------
+const raffle = () => {
   winner.classList.add("active");
-  let kisininKeyi = getRandomNumber();
-  // kisiler.kisininKeyi
-  // winnerName.innerText = "Sinan";
 
+  let kisininKeyi = getRandomNumber(participantList, 1);
+  
+  winnerName.innerText = kisininKeyi;
+  //console.log(name);
   setTimeout(() => {
     winner.classList.remove("active");
   }, 5000);
-}
-// Emrullah
+};
+//----------------Emrullah---------------------------
 
 // Tuba
 // fullName value degerini participantList'e ekle

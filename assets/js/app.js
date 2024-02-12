@@ -39,7 +39,6 @@ console.log(getRandomNumber(participantList, 2));
 // raffleInp.addEventListener
 const raffle = () => {
   winner.classList.add("active");
-  let kisininKeyi = getRandomNumber();
   // kisiler.kisininKeyi
   // winnerName.innerText = "Sinan";
 
@@ -77,11 +76,8 @@ function exitBox() {
 // Gunlere dagit foknsiyonu
 // DayCheck()
 
-
 const participantBody = document.querySelector(".participant-body");
 
 participantBody.addEventListener("click", (e) => {
   console.log(e.target.id);
 });
-
-

@@ -5,53 +5,48 @@ const winnerName = document.querySelector(".winnerName");
 const fullName = document.querySelector(".input-text");
 
 let participantList = {
-  "1":"Sinan",
-  "2":"Eda",
-  "3":"Sule",
-  "4":"Tuba",
-  "5":"Mehmet",
-  "6":"Cahit",
-  "7":"Emrullah",
-  "8":"Asiye",
-
-}
+  1: "Sinan",
+  2: "Eda",
+  3: "Sule",
+  4: "Tuba",
+  5: "Mehmet",
+  6: "Cahit",
+  7: "Emrullah",
+  8: "Asiye",
+};
 
 //----------------MEHMET-----------------------------
-const randomCreate = (obj,type) => { 
-
-  if(type===1){
-    const keys=Object.keys(obj);
-    const randomIndex=Math.floor(Math.random()*keys.length);
+const randomCreate = (obj, type) => {
+  if (type === 1) {
+    const keys = Object.keys(obj);
+    const randomIndex = Math.floor(Math.random() * keys.length);
     return keys[randomIndex];
-  }else if(type===2){
-    const keys=Object.keys(obj);
+  } else if (type === 2) {
+    const keys = Object.keys(obj);
 
-    keys.sort(()=>Math.random()-0.5);
-   
+    keys.sort(() => Math.random() - 0.5);
+
     return keys;
   }
-  }else{
-    alert("type 1 veya 2 olmalıdır")
-  }
- }
-console.log(randomCreate(participantList,1))
-console.log(randomCreate(participantList,2))
+};
+
+console.log(randomCreate(participantList, 1));
+console.log(randomCreate(participantList, 2));
 
 // Mehmet
-const getRandomNumber = (obj,type) => { 
-randomCreate(obj,type);
+const getRandomNumber = (obj, type) => {
+  randomCreate(obj, type);
 
-//Listedeki sayilarin random numarasini getir
-//  return kisinin keyi
-}
+  //Listedeki sayilarin random numarasini getir
+  //  return kisinin keyi
+};
 // Mehmet
 //----------------MEHMET-----------------------------
-
 
 // Emrullah
 function cekilis() {
   winner.classList.add("active");
-  let kisininKeyi = getRandomNumber()
+  let kisininKeyi = getRandomNumber();
   // kisiler.kisininKeyi
   // winnerName.innerText = "Sinan";
 
@@ -82,4 +77,4 @@ function exitBox() {
 
 // Eda
 // Gunlere dagit foknsiyonu
-// DayCheck() 
+// DayCheck()

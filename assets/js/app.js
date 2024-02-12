@@ -25,10 +25,10 @@ const randomCreate = (obj,type) => {
     return keys[randomIndex];
   }else if(type===2){
     const keys=Object.keys(obj);
-    for(let i=keys.length-1;i>0;i--){
-      const j=Math.floor(Math.random()*(i+1));
-      [keys[i],keys[j]]=[keys[j],keys[i]];
-      return keys;
+
+    keys.sort(()=>Math.random()-0.5);
+   
+    return keys;
   }
   }else{
     alert("type 1 veya 2 olmalıdır")

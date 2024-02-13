@@ -41,18 +41,17 @@ console.log(getRandomNumber(participantList, 2));
 // raffleInp.addEventListener
 const raffle = () => {
   winner.classList.add("active");
-  // kisiler.kisininKeyi
-  // winnerName.innerText = "Sinan";
 
   let kisininKeyi = getRandomNumber(participantList, 1);
 
-  winnerName.innerText = kisininKeyi;
-  //console.log(name);
+  const name = participantList[kisininKeyi];
+  winnerName.innerText = name;
+
   setTimeout(() => {
     winner.classList.remove("active");
   }, 5000);
 };
-// raffle();
+raffle();
 //----------------Emrullah---------------------------
 
 //----------------Tuba-------------------------------

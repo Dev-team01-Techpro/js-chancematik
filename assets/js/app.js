@@ -59,7 +59,9 @@ const raffle = () => {
 
 let nextId = Object.keys(participantList).length + 1; // İlk boş ID'yi bul
 
-submitButton.addEventListener("click", () => {
+submitButton.addEventListener("click", (e) => {
+  e.preventDefault();
+
   const newName = fullName.value;
 
   if (newName === "") {
@@ -75,7 +77,6 @@ submitButton.addEventListener("click", () => {
   Object.entries(participantList).forEach(([key, value]) => {
     console.log(`${key}: ${value}`);
   });
-
 });
 
 //----------------Tuba-------------------------------

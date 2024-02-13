@@ -45,7 +45,7 @@
 document.querySelector("#dDay").addEventListener("click",()=>{
 
   const matchUp = () => {
-    let days =dayCheck();
+    let days = ["pazartesi", "sali", "çarşamba", "persembe", "cuma"];
     let participantCount = Object.keys(participantList).length;
     let arrMatch = randomNumber(participantCount);
   

@@ -216,20 +216,24 @@ body {
   font-weight: bold;
   gap: 3px;
 }
+.lists .participant-icon #user-pen,
+.lists .participant-icon #xmark {
+  transition: color 0.5s ease-in-out;
+  -webkit-transition: color 0.5s ease-in-out;
+  -moz-transition: color 0.5s ease-in-out;
+  -ms-transition: color 0.5s ease-in-out;
+  -o-transition: color 0.5s ease-in-out;
+  cursor: pointer;
+}
 .lists .participant-icon #xmark {
   color: var(--icon-color);
-  transition-property: var(--icon-hover);
-  transition-duration: 2sn;
 }
 .lists .participant-icon #xmark:hover {
   color: var(--icon-hover);
 }
 .lists .participant-icon #user-pen {
   color: var(--secondary-color);
-  transition-property: var(--dark-green-color);
-  transition-duration: 2sn;
 }
 .lists .participant-icon #user-pen:hover {
   color: var(--dark-green-color);
- 
 }

@@ -4,7 +4,7 @@ const box = document.querySelector(".box");
 const winnerName = document.querySelector(".winnerName");
 const fullName = document.querySelector(".input-text");
 const raffleInp = document.querySelector(".raffle");
-const submitButton = document.querySelector(".btn input-submit");
+const submitButton = document.querySelector(".input-submit");
 
 let participantList = {
   1: "Sinan",
@@ -70,14 +70,12 @@ submitButton.addEventListener("click", () => {
   participantList[nextId] = newName;
 
   nextId++;
-
   fullName.value = "";
 
-  const participantDisplay = document.createElement("div");
-  participantDisplay.innerText = newName;
-  participantBody.appendChild(participantDisplay);
+  Object.entries(participantList).forEach(([key, value]) => {
+    console.log(`${key}: ${value}`);
+  });
 
-  console.log(participantList);
 });
 
 //----------------Tuba-------------------------------

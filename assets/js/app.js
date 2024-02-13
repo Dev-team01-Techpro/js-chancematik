@@ -135,25 +135,32 @@ const randomNumber = (max) => {
   return arr;
 };
 
-const matchUp = () => {
-  let days = ["pazartesi", "sali", "çarşamba", "persembe", "cuma"];
+//----------------Eda---------------------------------
 
-  let arrMatch = randomNumber(9);
+document.querySelector("#dDay").addEventListener("click",()=>{
 
-  for (let i = 0; i < days.length; i++) {
-    days[i] = arrMatch[i];
+  const matchUp = () => {
+    let days = ["pazartesi", "sali", "çarşamba", "persembe", "cuma"];
+    let participantCount = Object.keys(participantList).length;
+    let arrMatch = randomNumber(participantCount);
+  
+    for (let i = 0; i < participantCount; i++) {
+  
+      
+      let participantIndex = arrMatch[i] - 1;
+      let participant = participantList[participantIndex + 1];
+      let dayIndex = i % days.length;
+  
+  
+      console.log(`${days[dayIndex]}: ${participant}`);
+    }
+  };
+  matchUp()
+})
+//----------------Eda----------------------------------
 
-    console.log(days[i]);
-  }
-  console.log(days);
-};
-
-matchUp();
-
-// DayCheck()
-
-const participantBody = document.querySelector(".participant-body");
-
+  const participantBody = document.querySelector(".participant-body");
 participantBody.addEventListener("click", (e) => {
   console.log(e.target.id);
 });
+

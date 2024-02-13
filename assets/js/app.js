@@ -4,6 +4,7 @@ const box = document.querySelector(".box");
 const winnerName = document.querySelector(".winnerName");
 const fullName = document.querySelector(".input-text");
 const raffleInp = document.querySelector(".raffle");
+const submitButton = document.querySelector(".btn input-submit");
 
 let participantList = {
   1: "Sinan",
@@ -53,8 +54,34 @@ const raffle = () => {
 // raffle();
 //----------------Emrullah---------------------------
 
-// Tuba
+//----------------Tuba-------------------------------
 // fullName value degerini participantList'e ekle
+
+let nextId = Object.keys(participantList).length + 1; // İlk boş ID'yi bul
+
+submitButton.addEventListener("click", () => {
+  const newName = fullName.value;
+
+  if (newName === "") {
+    alert("Lütfen bir isim girin");
+    return;
+  }
+
+  participantList[nextId] = newName;
+
+  nextId++;
+
+  fullName.value = "";
+
+  const participantDisplay = document.createElement("div");
+  participantDisplay.innerText = newName;
+  participantBody.appendChild(participantDisplay);
+
+  console.log(participantList);
+});
+
+//----------------Tuba-------------------------------
+
 function addPart() {
   addParticipant.classList.add("active");
   box.classList.add("active");

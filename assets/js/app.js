@@ -79,9 +79,10 @@ const dayCheck = () => {
     }
   });
 
-  console.log(days);
   return days;
 };
+
+console.log(dayCheck());
 
 // Hangi gunler checked oldugunu kontrol et ve arraya at
 // fonksiyon icereisne yap. Return fonksiyon

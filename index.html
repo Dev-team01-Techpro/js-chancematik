@@ -20,7 +20,7 @@
         </div> -->
         <navbar class="navbar">
           <div class="nav-item raffle">Çekiliş Yap</div>
-          <div class="nav-item">Günlere Dağıt</div>
+          <div class="nav-item" id="dDay">Günlere Dağıt</div>
           <div class="nav-item" onclick="addPart()">Katılımcı Ekle</div>
         </navbar>
       </div>
@@ -61,7 +61,7 @@
       <input class="checkmark" type="checkbox" id="pazar" />
       <label for="pazar">Pazar</label>
     </div>
-    <input class="btn" type="submit" value="Submit" />
+    <input onclick="dayCheck()" class="btn" type="submit" value="Submit" />
   </aside>
   <main class="container">
     <div class="winner-container">

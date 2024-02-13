@@ -22,8 +22,8 @@ a {
   --yellow--color: #fedc56;
   --bg-color: #fafafa;
   --text-color: #3d3d3d;
-  --icon-hover:#9f0505;
-  --icon-color: #bc2a2a;
+  --icon-hover: #950404;
+  --icon-color: #e53f3f;
 }
 body {
   background-color: var(--bg-color);
@@ -193,7 +193,6 @@ body {
   width: 100%;
   border-right: 3px solid silver;
   padding-right: 10px;
-  
 }
 .lists .participant-list .participant-body .participant {
   display: flex;
@@ -206,7 +205,6 @@ body {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid silver;
- 
 }
 .lists .participant-day-list {
   width: 100%;
@@ -215,26 +213,27 @@ body {
 .lists .participant-day-list .participanttitle {
   text-align: center;
   border-bottom: 15px;
-  font-weight:bold;
-  gap: 3px;   
+  font-weight: bold;
+  gap: 3px;
 }
-.lists .participant-list .participant-title:hover {
-  color: var(--bg-color);
-  background-color: var(--text-color);
+.lists .participant-icon #user-pen,
+.lists .participant-icon #xmark {
+  transition: color 0.5s ease-in-out;
+  -webkit-transition: color 0.5s ease-in-out;
+  -moz-transition: color 0.5s ease-in-out;
+  -ms-transition: color 0.5s ease-in-out;
+  -o-transition: color 0.5s ease-in-out;
+  cursor: pointer;
 }
-.lists .participant-day-list .participanttitle:hover {
-   color: var(--bg-color);
-   background-color: var(--text-color);
+.lists .participant-icon #xmark {
+  color: var(--icon-color);
 }
-.lists .participant-icon #xmark{
-   color: var(--icon-color); 
-}
-.lists .participant-icon #xmark:hover{
+.lists .participant-icon #xmark:hover {
   color: var(--icon-hover);
 }
-.lists .participant-icon #user-pen{  
+.lists .participant-icon #user-pen {
   color: var(--secondary-color);
 }
-.lists .participant-icon #user-pen:hover{
+.lists .participant-icon #user-pen:hover {
   color: var(--dark-green-color);
 }

@@ -66,6 +66,24 @@ function exitBox() {
 }
 
 // Cahit
+//------------------------------------------------------
+
+const DayCheck = () => { 
+  let days = [];
+
+  inputs.forEach(input => {
+    if(input.checked) {
+      days.push(input.id);
+    }
+  });
+
+ 
+  return days;
+};
+
+
+
+
 // Hangi gunler checked oldugunu kontrol et ve arraya at
 // fonksiyon icereisne yap. Return fonksiyon
 // DayCheck()

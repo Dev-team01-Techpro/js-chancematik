@@ -112,55 +112,27 @@ console.log(dayCheck());
 
 // Hangi gunler checked oldugunu kontrol et ve arraya at
 // fonksiyon icereisne yap. Return fonksiyon
-// DayCheck()
-// const cars = ["Saab", "Volvo", "BMW"];
-// return cars;
-
-// Eda
-// Gunlere dagit foknsiyonu
-
-const randomNumber = (max) => {
-  let i = 0;
-  let arr = [];
-
-  while (i + 1 <= max) {
-    let randomN = Math.floor(Math.random() * max) + 1;
-
-    if (randomN != 0 && !arr.includes(randomN)) {
-      arr.push(randomN);
-
-      i++;
-    }
-  }
-  return arr;
-};
 
 //----------------Eda---------------------------------
-
-document.querySelector("#dDay").addEventListener("click",()=>{
-
+document.querySelector("#dDay").addEventListener("click", () => {
   const matchUp = () => {
-    let days = ["pazartesi", "sali", "çarşamba", "persembe", "cuma"];
+    let days = dayCheck();
     let participantCount = Object.keys(participantList).length;
-    let arrMatch = randomNumber(participantCount);
-  
+    let arrMatch = getRandomNumber(participantList, 2);
+
     for (let i = 0; i < participantCount; i++) {
-  
-      
       let participantIndex = arrMatch[i] - 1;
       let participant = participantList[participantIndex + 1];
       let dayIndex = i % days.length;
-  
-  
+
       console.log(`${days[dayIndex]}: ${participant}`);
     }
   };
-  matchUp()
-})
+  matchUp();
+});
 //----------------Eda----------------------------------
 
-  const participantBody = document.querySelector(".participant-body");
+const participantBody = document.querySelector(".participant-body");
 participantBody.addEventListener("click", (e) => {
   console.log(e.target.id);
 });
-

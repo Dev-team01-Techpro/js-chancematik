@@ -68,21 +68,20 @@ function exitBox() {
 // Cahit
 //------------------------------------------------------
 
-const DayCheck = () => { 
+const dayCheck = () => {
+  let inputs = document.querySelectorAll(".day-list .day-item input");
+
   let days = [];
 
-  inputs.forEach(input => {
-    if(input.checked) {
+  inputs.forEach((input) => {
+    if (input.checked) {
       days.push(input.id);
     }
   });
 
- 
+  console.log(days);
   return days;
 };
-
-
-
 
 // Hangi gunler checked oldugunu kontrol et ve arraya at
 // fonksiyon icereisne yap. Return fonksiyon
@@ -106,27 +105,23 @@ const randomNumber = (max) => {
       i++;
     }
   }
- return arr;
+  return arr;
 };
 
-
 const matchUp = () => {
-  
-let days=["pazartesi", "sali","çarşamba","persembe","cuma"];
+  let days = ["pazartesi", "sali", "çarşamba", "persembe", "cuma"];
 
   let arrMatch = randomNumber(9);
 
-  for(let i=0; i<days.length; i++){
-    days[i]=arrMatch[i];
+  for (let i = 0; i < days.length; i++) {
+    days[i] = arrMatch[i];
 
-    console.log(days[i])
+    console.log(days[i]);
   }
-console.log(days)
-
-
+  console.log(days);
 };
 
-matchUp()
+matchUp();
 
 // DayCheck()
 
@@ -135,4 +130,3 @@ const participantBody = document.querySelector(".participant-body");
 participantBody.addEventListener("click", (e) => {
   console.log(e.target.id);
 });
-

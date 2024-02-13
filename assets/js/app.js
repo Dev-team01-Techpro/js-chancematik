@@ -5,6 +5,7 @@ const winnerName = document.querySelector(".winnerName");
 const fullName = document.querySelector(".input-text");
 const raffleInp = document.querySelector(".raffle");
 const submitButton = document.querySelector(".input-submit");
+const participants = document.querySelector(".participants");
 
 let participantList = {
   1: "Sinan",
@@ -136,3 +137,27 @@ const participantBody = document.querySelector(".participant-body");
 participantBody.addEventListener("click", (e) => {
   console.log(e.target.id);
 });
+
+const participantInfo = document.createElement("div");
+participantInfo.className = "participant";
+participantInfo.id = "participant-KEY";
+participants.appendChild(participantInfo);
+
+const participantName = document.createElement("span");
+participantName.className = "participant-name";
+participantName.innerText = "Edward Snowden - VALUE";
+participantInfo.appendChild(participantName);
+
+const participantIcon = document.createElement("div");
+participantIcon.className = "participant-icon";
+participantInfo.appendChild(participantIcon);
+
+const participantIconPen = document.createElement("i");
+participantIconPen.className = "fa-solid fa-user-pen";
+participantIconPen.id = "user-pen";
+participantIcon.appendChild(participantIconPen);
+
+const participantIconXmark = document.createElement("i");
+participantIconXmark.className = "fa-solid fa-user-xmark";
+participantIconXmark.id = "xmark";
+participantIcon.appendChild(participantIconXmark);

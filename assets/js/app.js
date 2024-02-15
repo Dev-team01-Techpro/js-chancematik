@@ -59,10 +59,12 @@ raffle();
 
 let nextId = Object.keys(participantList).length + 1; // İlk boş ID'yi bul
 
-submitButton.addEventListener("click", (e) => {
+
+   submitButton.addEventListener("click", (e) => {
   e.preventDefault();
 
   const newName = fullName.value;
+  
 
   if (newName === "") {
     alert("Lütfen bir isim girin");
@@ -77,6 +79,9 @@ submitButton.addEventListener("click", (e) => {
   Object.entries(participantList).forEach(([key, value]) => {
     console.log(`${key}: ${value}`);
   });
+
+  katilimciEkle(newName);
+
 });
 
 //----------------Tuba-------------------------------
@@ -134,29 +139,40 @@ document.querySelector("#dDay").addEventListener("click", () => {
 
 const participantBody = document.querySelector(".participant-body");
 participantBody.addEventListener("click", (e) => {
-  console.log(e.target.id);
+  return e.target.id;
 });
 
-const participantInfo = document.createElement("div");
-participantInfo.className = "participant";
-participantInfo.id = "participant-KEY";
-participants.appendChild(participantInfo);
 
-const participantName = document.createElement("span");
-participantName.className = "participant-name";
-participantName.innerText = "Edward Snowden - VALUE";
-participantInfo.appendChild(participantName);
 
-const participantIcon = document.createElement("div");
-participantIcon.className = "participant-icon";
-participantInfo.appendChild(participantIcon);
+let katilimciEkle=(name)=>{
 
-const participantIconPen = document.createElement("i");
-participantIconPen.className = "fa-solid fa-user-pen";
-participantIconPen.id = "user-pen";
-participantIcon.appendChild(participantIconPen);
 
-const participantIconXmark = document.createElement("i");
-participantIconXmark.className = "fa-solid fa-user-xmark";
-participantIconXmark.id = "xmark";
-participantIcon.appendChild(participantIconXmark);
+
+  const participantInfo = document.createElement("div");
+  participantInfo.className = "participant";
+  participantInfo.id = `${nextId}`;
+  participants.appendChild(participantInfo);
+  
+  const participantName = document.createElement("span");
+  participantName.className = "participant-name";
+  participantName.innerText = `${name}`;
+  participantInfo.appendChild(participantName);
+  
+  const participantIcon = document.createElement("div");
+  participantIcon.className = "participant-icon";
+  participantInfo.appendChild(participantIcon);
+  
+  const participantIconPen = document.createElement("i");
+  participantIconPen.className = "fa-solid fa-user-pen";
+  participantIconPen.id = "user-pen";
+  participantIcon.appendChild(participantIconPen);
+  
+  const participantIconXmark = document.createElement("i");
+  participantIconXmark.className = "fa-solid fa-user-xmark";
+  participantIconXmark.id = "xmark";
+  participantIcon.appendChild(participantIconXmark);
+  
+
+
+}
+

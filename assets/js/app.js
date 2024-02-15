@@ -7,16 +7,7 @@ const raffleInp = document.querySelector(".raffle");
 const submitButton = document.querySelector(".input-submit");
 const participants = document.querySelector(".participants");
 
-let participantList = {
-  1: "Sinan",
-  2: "Eda",
-  3: "Sule",
-  4: "Tuba",
-  5: "Mehmet",
-  6: "Cahit",
-  7: "Emrullah",
-  8: "Asiye",
-};
+let participantList = {};
 
 //----------------MEHMET-----------------------------
 const getRandomNumber = (obj, type) => {
@@ -59,12 +50,10 @@ raffle();
 
 let nextId = Object.keys(participantList).length + 1; // İlk boş ID'yi bul
 
-
-   submitButton.addEventListener("click", (e) => {
+submitButton.addEventListener("click", (e) => {
   e.preventDefault();
 
   const newName = fullName.value;
-  
 
   if (newName === "") {
     alert("Lütfen bir isim girin");
@@ -73,6 +62,8 @@ let nextId = Object.keys(participantList).length + 1; // İlk boş ID'yi bul
 
   participantList[nextId] = newName;
 
+  katilimciEkle(newName ,nextId);
+
   nextId++;
   fullName.value = "";
 
@@ -80,8 +71,7 @@ let nextId = Object.keys(participantList).length + 1; // İlk boş ID'yi bul
     console.log(`${key}: ${value}`);
   });
 
-  katilimciEkle(newName);
-
+ 
 });
 
 //----------------Tuba-------------------------------
@@ -142,37 +132,43 @@ participantBody.addEventListener("click", (e) => {
   return e.target.id;
 });
 
-
-
-let katilimciEkle=(name)=>{
-
-
-
+let katilimciEkle = (name,no) => {
   const participantInfo = document.createElement("div");
   participantInfo.className = "participant";
   participantInfo.id = `${nextId}`;
   participants.appendChild(participantInfo);
-  
+
   const participantName = document.createElement("span");
   participantName.className = "participant-name";
   participantName.innerText = `${name}`;
   participantInfo.appendChild(participantName);
-  
+
   const participantIcon = document.createElement("div");
   participantIcon.className = "participant-icon";
   participantInfo.appendChild(participantIcon);
-  
+
   const participantIconPen = document.createElement("i");
   participantIconPen.className = "fa-solid fa-user-pen";
   participantIconPen.id = "user-pen";
   participantIcon.appendChild(participantIconPen);
-  
+
   const participantIconXmark = document.createElement("i");
   participantIconXmark.className = "fa-solid fa-user-xmark";
   participantIconXmark.id = "xmark";
   participantIcon.appendChild(participantIconXmark);
-  
+};
+
+/* const participantListDeleteBtns = document.querySelectorAll(".participant .participant-icon #xmark");
+
+participantListDeleteBtns.addEventListener((e)=>{
+
+let yakinDiv =e.target.closest(".participant");
+yakinDiv.remove();
+
+}) */
 
 
-}
+
+
+
 

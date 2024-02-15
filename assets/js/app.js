@@ -116,6 +116,9 @@ console.log(dayCheck());
 //----------------Eda---------------------------------
 document.querySelector("#dDay").addEventListener("click", () => {
   const matchUp = () => {
+    let arr = [];
+    let divArray = [];
+
     let days = dayCheck();
     let participantCount = Object.keys(participantList).length;
     let arrMatch = getRandomNumber(participantList, 2);
@@ -125,38 +128,44 @@ document.querySelector("#dDay").addEventListener("click", () => {
       let participant = participantList[participantIndex + 1];
       let dayIndex = i % days.length;
 
-      console.log(`${days[dayIndex]}: ${participant}`);
+      arr[i] = days[dayIndex] + " : " + participant;
+
+      console.log(arr[i]);
+
+      let newDiv = document.createElement("div");
+      newDiv.className = "participant";
+      newDiv.id = `participant-${i + 1}`;
+      divArray.push(newDiv);
+
+      let newSpan = document.createElement("span");
+      newSpan.className = "participant-name";
+      newSpan.innerHTML = `${arr[i]}`;
+      newDiv.appendChild(newSpan);
+
+      let iconDiv = document.createElement("div");
+      iconDiv.className = "participant-icon";
+      newDiv.appendChild(iconDiv);
+
+      let iconEl1 = document.createElement("i");
+      iconEl1.className = "fa-solid fa-user-pen";
+      iconEl1.id = "user-pen";
+      iconDiv.appendChild(iconEl1);
+
+      let iconEl2 = document.createElement("i");
+      iconEl2.className = "fa-solid fa-user-xmark";
+      iconEl2.id = "xmark";
+      iconDiv.appendChild(iconEl2);
     }
+    let container = document.querySelector(".participant-body.dagilim");
+    divArray.forEach((div) => {
+      container.appendChild(div);
+    });
+
+    let dayListDiv = document.querySelector(".participant-day-list");
+    dayListDiv.appendChild(container);
   };
+
   matchUp();
 });
+
 //----------------Eda----------------------------------
-
-const participantBody = document.querySelector(".participant-body");
-participantBody.addEventListener("click", (e) => {
-  console.log(e.target.id);
-});
-
-const participantInfo = document.createElement("div");
-participantInfo.className = "participant";
-participantInfo.id = "participant-KEY";
-participants.appendChild(participantInfo);
-
-const participantName = document.createElement("span");
-participantName.className = "participant-name";
-participantName.innerText = "Edward Snowden - VALUE";
-participantInfo.appendChild(participantName);
-
-const participantIcon = document.createElement("div");
-participantIcon.className = "participant-icon";
-participantInfo.appendChild(participantIcon);
-
-const participantIconPen = document.createElement("i");
-participantIconPen.className = "fa-solid fa-user-pen";
-participantIconPen.id = "user-pen";
-participantIcon.appendChild(participantIconPen);
-
-const participantIconXmark = document.createElement("i");
-participantIconXmark.className = "fa-solid fa-user-xmark";
-participantIconXmark.id = "xmark";
-participantIcon.appendChild(participantIconXmark);

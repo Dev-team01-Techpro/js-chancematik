@@ -9,16 +9,7 @@ const participants = document.querySelector(".participants");
 const dDay = document.querySelector("#dDay");
 const matchDay = document.querySelector(".participant-body.matchDay");
 
-let participantList = {
-  1: "Sinan",
-  2: "Eda",
-  3: "Sule",
-  4: "Tuba",
-  5: "Mehmet",
-  6: "Cahit",
-  7: "Emrullah",
-  8: "Asiye",
-};
+let participantList = {};
 
 //----------------MEHMET-----------------------------
 const getRandomNumber = (obj, type) => {
@@ -83,6 +74,8 @@ submitButton.addEventListener("click", (e) => {
   }
 
   participantList[nextId] = newName;
+
+  katilimciEkle(newName);
 
   nextId++;
   fullName.value = "";
@@ -193,6 +186,58 @@ const matchUp = () => {
 // Eslestirme fonksiyonu
 //----------------Eda----------------------------------
 
+const participantBody = document.querySelector(".participant-body");
+participantBody.addEventListener("click", (e) => {
+  return e.target.id;
+});
+
+let katilimciEkle = (name) => {
+  const participantInfo = document.createElement("div");
+  participantInfo.className = "participant";
+  participantInfo.id = `${nextId}`;
+  participants.appendChild(participantInfo);
+
+  const participantName = document.createElement("span");
+  participantName.className = "participant-name";
+  participantName.innerText = `${name}`;
+  participantInfo.appendChild(participantName);
+
+  const participantIcon = document.createElement("div");
+  participantIcon.className = "participant-icon";
+  participantInfo.appendChild(participantIcon);
+
+  const participantIconPen = document.createElement("i");
+  participantIconPen.className = "fa-solid fa-user-pen";
+  participantIconPen.id = "user-pen";
+  participantIcon.appendChild(participantIconPen);
+
+  const participantIconXmark = document.createElement("i");
+  participantIconXmark.className = "fa-solid fa-user-xmark";
+  participantIconXmark.id = "xmark";
+  participantIcon.appendChild(participantIconXmark);
+};
+
+const participant = document.querySelector(".participants");
+
+participant.addEventListener("click", (e) => {
+  let btn = e.target.className;
+
+  if (btn == "fa-solid fa-user-xmark") {
+    dltDiv = e.target.closest(".participants");
+    dltDiv.remove();
+  }
+
+  if (btn == "fa-solid fa-user-pen") {
+    let span = e.target.closest(".participant-name");
+
+    let newName = prompt("Yeni ismi giriniz");
+
+    console.log("yeni isim" + newName);
+
+    span.innerText = newName;
+  }
+});
+
 //Delete Button
 const addDeleteButtons = () => {
   document.querySelectorAll(".delete-day").forEach((item) => {
@@ -202,10 +247,4 @@ const addDeleteButtons = () => {
   });
 };
 
-//Edit Button
 
-document.querySelector(".matchDay").addEventListener("click", (e) => {
-  let editName = e.target.className;
-
-
-});

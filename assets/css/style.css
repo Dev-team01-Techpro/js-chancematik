@@ -230,6 +230,7 @@ body {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid silver;
+  margin-top: 20px;
 }
 .lists .participant-day-list .participant-body .participant {
   display: flex;
@@ -249,6 +250,8 @@ body {
 }
 .lists .participant-icon #user-pen,
 .lists .participant-icon #xmark {
+  margin-right: 2px;
+  
   transition: color 0.5s ease-in-out;
   -webkit-transition: color 0.5s ease-in-out;
   -moz-transition: color 0.5s ease-in-out;
@@ -258,12 +261,14 @@ body {
 }
 .lists .participant-icon #xmark {
   color: var(--icon-color);
+  
 }
 .lists .participant-icon #xmark:hover {
   color: var(--icon-hover);
 }
 .lists .participant-icon #user-pen {
   color: var(--secondary-color);
+  margin-right: 10px;
 }
 .lists .participant-icon #user-pen:hover {
   color: var(--dark-green-color);

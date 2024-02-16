@@ -36,6 +36,17 @@ const getRandomNumber = (obj, type) => {
 console.log(getRandomNumber(participantList, 1));
 console.log(getRandomNumber(participantList, 2));
 //----------------MEHMET-----------------------------
+const ac=()=>{
+  const dayEl=document.querySelector(".day-list");
+  dayEl.classList.add("menu-ac");
+}
+const kapat=()=>{
+  const dayEl=document.querySelector(".day-list");
+  dayEl.classList.remove("menu-ac");
+
+}
+
+//----------------MEHMET-----------------------------
 
 //----------------Emrullah---------------------------
 // raffleInp.addEventListener

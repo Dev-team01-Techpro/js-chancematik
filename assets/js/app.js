@@ -6,6 +6,8 @@ const fullName = document.querySelector(".input-text");
 const raffleInp = document.querySelector(".raffle");
 const submitButton = document.querySelector(".input-submit");
 const participants = document.querySelector(".participants");
+const dDay = document.querySelector("#dDay");
+const matchDay = document.querySelector(".participant-body.matchDay");
 
 let participantList = {
   1: "Sinan",
@@ -125,49 +127,85 @@ console.log(dayCheck());
 // fonksiyon icereisne yap. Return fonksiyon
 
 //----------------Eda---------------------------------
-document.querySelector("#dDay").addEventListener("click", () => {
-  const matchUp = () => {
-    let days = dayCheck();
-    let participantCount = Object.keys(participantList).length;
-    let arrMatch = getRandomNumber(participantList, 2);
 
-    for (let i = 0; i < participantCount; i++) {
-      let participantIndex = arrMatch[i] - 1;
-      let participant = participantList[participantIndex + 1];
-      let dayIndex = i % days.length;
+dDay.addEventListener("click", () => {
+  let participantDivs = matchDay.querySelectorAll(".participant");
 
-      console.log(`${days[dayIndex]}: ${participant}`);
-    }
-  };
+  participantDivs.forEach((particip) => {
+    particip.remove();
+  });
+
   matchUp();
 });
+
+// Eslestirme fonksiyonu
+const matchUp = () => {
+  let arr = [];
+  let divArray = [];
+
+  let days = dayCheck();
+  let participantCount = Object.keys(participantList).length;
+  let arrMatch = getRandomNumber(participantList, 2);
+
+  for (let i = 0; i < participantCount; i++) {
+    let participantIndex = arrMatch[i] - 1;
+    let participant = participantList[participantIndex + 1];
+    let dayIndex = i % days.length;
+
+    arr[i] = days[dayIndex] + " : " + participant;
+
+    console.log(arr[i]);
+
+    let newDiv = document.createElement("div");
+    newDiv.className = "participant";
+    newDiv.id = `participant-${i + 1}`;
+    divArray.push(newDiv);
+
+    let newSpan = document.createElement("span");
+    newSpan.className = "participant-name";
+    newSpan.innerText = `${arr[i]}`;
+    newDiv.appendChild(newSpan);
+
+    let iconDiv = document.createElement("div");
+    iconDiv.className = "participant-icon";
+    newDiv.appendChild(iconDiv);
+
+    let iconEl1 = document.createElement("i");
+    iconEl1.className = `fa-solid fa-user-pen edit-day ${i + 1}`;
+    iconEl1.id = `user-pen`;
+    iconDiv.appendChild(iconEl1);
+
+    let iconEl2 = document.createElement("i");
+    iconEl2.className = "fa-solid fa-user-xmark delete-day";
+    iconEl2.id = "xmark";
+    iconDiv.appendChild(iconEl2);
+
+    let container = document.querySelector(".participant-body.matchDay");
+    divArray.forEach((div) => {
+      container.appendChild(div);
+    });
+
+    let dayListDiv = document.querySelector(".participant-day-list");
+    dayListDiv.appendChild(container);
+  }
+  addDeleteButtons();
+};
+// Eslestirme fonksiyonu
 //----------------Eda----------------------------------
 
-const participantBody = document.querySelector(".participant-body");
-participantBody.addEventListener("click", (e) => {
-  console.log(e.target.id);
+//Delete Button
+const addDeleteButtons = () => {
+  document.querySelectorAll(".delete-day").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.target.parentElement.parentElement.remove();
+    });
+  });
+};
+
+//Edit Button
+
+document.querySelector(".matchDay").addEventListener("click", (e) => {
+  let editName = e.target.className;
+
+
 });
-
-const participantInfo = document.createElement("div");
-participantInfo.className = "participant";
-participantInfo.id = "participant-KEY";
-participants.appendChild(participantInfo);
-
-const participantName = document.createElement("span");
-participantName.className = "participant-name";
-participantName.innerText = "Edward Snowden - VALUE";
-participantInfo.appendChild(participantName);
-
-const participantIcon = document.createElement("div");
-participantIcon.className = "participant-icon";
-participantInfo.appendChild(participantIcon);
-
-const participantIconPen = document.createElement("i");
-participantIconPen.className = "fa-solid fa-user-pen";
-participantIconPen.id = "user-pen";
-participantIcon.appendChild(participantIconPen);
-
-const participantIconXmark = document.createElement("i");
-participantIconXmark.className = "fa-solid fa-user-xmark";
-participantIconXmark.id = "xmark";
-participantIcon.appendChild(participantIconXmark);

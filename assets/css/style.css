@@ -268,3 +268,7 @@ body {
 .lists .participant-icon #user-pen:hover {
   color: var(--dark-green-color);
 }
+
+.participant-body.matchDay .participant {
+  margin: 20px 0;
+}

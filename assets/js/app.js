@@ -6,6 +6,8 @@ const fullName = document.querySelector(".input-text");
 const raffleInp = document.querySelector(".raffle");
 const submitButton = document.querySelector(".input-submit");
 const participants = document.querySelector(".participants");
+const dDay = document.querySelector("#dDay");
+const matchDay = document.querySelector(".participant-body.matchDay");
 
 let participantList = {
   1: "Sinan",
@@ -114,58 +116,85 @@ console.log(dayCheck());
 // fonksiyon icereisne yap. Return fonksiyon
 
 //----------------Eda---------------------------------
-document.querySelector("#dDay").addEventListener("click", () => {
-  const matchUp = () => {
-    let arr = [];
-    let divArray = [];
 
-    let days = dayCheck();
-    let participantCount = Object.keys(participantList).length;
-    let arrMatch = getRandomNumber(participantList, 2);
+dDay.addEventListener("click", () => {
+  let participantDivs = matchDay.querySelectorAll(".participant");
 
-    for (let i = 0; i < participantCount; i++) {
-      let participantIndex = arrMatch[i] - 1;
-      let participant = participantList[participantIndex + 1];
-      let dayIndex = i % days.length;
+  participantDivs.forEach((particip) => {
+    particip.remove();
+  });
 
-      arr[i] = days[dayIndex] + " : " + participant;
+  matchUp();
+});
 
-      console.log(arr[i]);
+// Eslestirme fonksiyonu
+const matchUp = () => {
+  let arr = [];
+  let divArray = [];
 
-      let newDiv = document.createElement("div");
-      newDiv.className = "participant";
-      newDiv.id = `participant-${i + 1}`;
-      divArray.push(newDiv);
+  let days = dayCheck();
+  let participantCount = Object.keys(participantList).length;
+  let arrMatch = getRandomNumber(participantList, 2);
 
-      let newSpan = document.createElement("span");
-      newSpan.className = "participant-name";
-      newSpan.innerHTML = `${arr[i]}`;
-      newDiv.appendChild(newSpan);
+  for (let i = 0; i < participantCount; i++) {
+    let participantIndex = arrMatch[i] - 1;
+    let participant = participantList[participantIndex + 1];
+    let dayIndex = i % days.length;
 
-      let iconDiv = document.createElement("div");
-      iconDiv.className = "participant-icon";
-      newDiv.appendChild(iconDiv);
+    arr[i] = days[dayIndex] + " : " + participant;
 
-      let iconEl1 = document.createElement("i");
-      iconEl1.className = "fa-solid fa-user-pen";
-      iconEl1.id = "user-pen";
-      iconDiv.appendChild(iconEl1);
+    console.log(arr[i]);
 
-      let iconEl2 = document.createElement("i");
-      iconEl2.className = "fa-solid fa-user-xmark";
-      iconEl2.id = "xmark";
-      iconDiv.appendChild(iconEl2);
-    }
-    let container = document.querySelector(".participant-body.dagilim");
+    let newDiv = document.createElement("div");
+    newDiv.className = "participant";
+    newDiv.id = `participant-${i + 1}`;
+    divArray.push(newDiv);
+
+    let newSpan = document.createElement("span");
+    newSpan.className = "participant-name";
+    newSpan.innerText = `${arr[i]}`;
+    newDiv.appendChild(newSpan);
+
+    let iconDiv = document.createElement("div");
+    iconDiv.className = "participant-icon";
+    newDiv.appendChild(iconDiv);
+
+    let iconEl1 = document.createElement("i");
+    iconEl1.className = `fa-solid fa-user-pen edit-day ${i + 1}`;
+    iconEl1.id = `user-pen`;
+    iconDiv.appendChild(iconEl1);
+
+    let iconEl2 = document.createElement("i");
+    iconEl2.className = "fa-solid fa-user-xmark delete-day";
+    iconEl2.id = "xmark";
+    iconDiv.appendChild(iconEl2);
+
+    let container = document.querySelector(".participant-body.matchDay");
     divArray.forEach((div) => {
       container.appendChild(div);
     });
 
     let dayListDiv = document.querySelector(".participant-day-list");
     dayListDiv.appendChild(container);
-  };
-
-  matchUp();
-});
-
+  }
+  addDeleteButtons();
+};
+// Eslestirme fonksiyonu
 //----------------Eda----------------------------------
+
+//Delete Button
+const addDeleteButtons = () => {
+  document.querySelectorAll(".delete-day").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.target.parentElement.parentElement.remove();
+    });
+  });
+};
+
+//Edit Button
+
+document.querySelector(".matchDay").addEventListener("click", (e) => {
+  let editName = e.target.className;
+
+
+});

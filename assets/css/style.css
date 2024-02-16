@@ -238,6 +238,6 @@ body {
   color: var(--dark-green-color);
 }
 
-.participant-body.dagilim .participant{
+.participant-body.matchDay .participant {
   margin: 20px 0;
 }

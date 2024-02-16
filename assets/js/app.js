@@ -62,7 +62,7 @@ submitButton.addEventListener("click", (e) => {
 
   participantList[nextId] = newName;
 
-  katilimciEkle(newName ,nextId);
+  katilimciEkle(newName);
 
   nextId++;
   fullName.value = "";
@@ -70,8 +70,6 @@ submitButton.addEventListener("click", (e) => {
   Object.entries(participantList).forEach(([key, value]) => {
     console.log(`${key}: ${value}`);
   });
-
- 
 });
 
 //----------------Tuba-------------------------------
@@ -132,7 +130,7 @@ participantBody.addEventListener("click", (e) => {
   return e.target.id;
 });
 
-let katilimciEkle = (name,no) => {
+let katilimciEkle = (name) => {
   const participantInfo = document.createElement("div");
   participantInfo.className = "participant";
   participantInfo.id = `${nextId}`;
@@ -157,18 +155,4 @@ let katilimciEkle = (name,no) => {
   participantIconXmark.id = "xmark";
   participantIcon.appendChild(participantIconXmark);
 };
-
-/* const participantListDeleteBtns = document.querySelectorAll(".participant .participant-icon #xmark");
-
-participantListDeleteBtns.addEventListener((e)=>{
-
-let yakinDiv =e.target.closest(".participant");
-yakinDiv.remove();
-
-}) */
-
-
-
-
-
 

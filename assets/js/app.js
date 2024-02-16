@@ -6,6 +6,8 @@ const fullName = document.querySelector(".input-text");
 const raffleInp = document.querySelector(".raffle");
 const submitButton = document.querySelector(".input-submit");
 const participants = document.querySelector(".participants");
+const dDay = document.querySelector("#dDay");
+const matchDay = document.querySelector(".participant-body.matchDay");
 
 let participantList = {};
 
@@ -26,6 +28,17 @@ const getRandomNumber = (obj, type) => {
 
 console.log(getRandomNumber(participantList, 1));
 console.log(getRandomNumber(participantList, 2));
+//----------------MEHMET-----------------------------
+const ac=()=>{
+  const dayEl=document.querySelector(".day-list");
+  dayEl.classList.add("menu-ac");
+}
+const kapat=()=>{
+  const dayEl=document.querySelector(".day-list");
+  dayEl.classList.remove("menu-ac");
+
+}
+
 //----------------MEHMET-----------------------------
 
 //----------------Emrullah---------------------------
@@ -107,22 +120,70 @@ console.log(dayCheck());
 // fonksiyon icereisne yap. Return fonksiyon
 
 //----------------Eda---------------------------------
-document.querySelector("#dDay").addEventListener("click", () => {
-  const matchUp = () => {
-    let days = dayCheck();
-    let participantCount = Object.keys(participantList).length;
-    let arrMatch = getRandomNumber(participantList, 2);
 
-    for (let i = 0; i < participantCount; i++) {
-      let participantIndex = arrMatch[i] - 1;
-      let participant = participantList[participantIndex + 1];
-      let dayIndex = i % days.length;
+dDay.addEventListener("click", () => {
+  let participantDivs = matchDay.querySelectorAll(".participant");
 
-      console.log(`${days[dayIndex]}: ${participant}`);
-    }
-  };
+  participantDivs.forEach((particip) => {
+    particip.remove();
+  });
+
   matchUp();
 });
+
+// Eslestirme fonksiyonu
+const matchUp = () => {
+  let arr = [];
+  let divArray = [];
+
+  let days = dayCheck();
+  let participantCount = Object.keys(participantList).length;
+  let arrMatch = getRandomNumber(participantList, 2);
+
+  for (let i = 0; i < participantCount; i++) {
+    let participantIndex = arrMatch[i] - 1;
+    let participant = participantList[participantIndex + 1];
+    let dayIndex = i % days.length;
+
+    arr[i] = days[dayIndex] + " : " + participant;
+
+    console.log(arr[i]);
+
+    let newDiv = document.createElement("div");
+    newDiv.className = "participant";
+    newDiv.id = `participant-${i + 1}`;
+    divArray.push(newDiv);
+
+    let newSpan = document.createElement("span");
+    newSpan.className = "participant-name";
+    newSpan.innerText = `${arr[i]}`;
+    newDiv.appendChild(newSpan);
+
+    let iconDiv = document.createElement("div");
+    iconDiv.className = "participant-icon";
+    newDiv.appendChild(iconDiv);
+
+    let iconEl1 = document.createElement("i");
+    iconEl1.className = `fa-solid fa-user-pen edit-day ${i + 1}`;
+    iconEl1.id = `user-pen`;
+    iconDiv.appendChild(iconEl1);
+
+    let iconEl2 = document.createElement("i");
+    iconEl2.className = "fa-solid fa-user-xmark delete-day";
+    iconEl2.id = "xmark";
+    iconDiv.appendChild(iconEl2);
+
+    let container = document.querySelector(".participant-body.matchDay");
+    divArray.forEach((div) => {
+      container.appendChild(div);
+    });
+
+    let dayListDiv = document.querySelector(".participant-day-list");
+    dayListDiv.appendChild(container);
+  }
+  addDeleteButtons();
+};
+// Eslestirme fonksiyonu
 //----------------Eda----------------------------------
 
 const participantBody = document.querySelector(".participant-body");
@@ -177,7 +238,13 @@ participant.addEventListener("click", (e) => {
   }
 });
 
-
-
+//Delete Button
+const addDeleteButtons = () => {
+  document.querySelectorAll(".delete-day").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      e.target.parentElement.parentElement.remove();
+    });
+  });
+};
 
 

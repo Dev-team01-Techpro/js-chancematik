@@ -140,26 +140,57 @@ body {
   border-radius: 5px;
   outline: none;
 }
+/*--------------------------------------------------------------*/
+.days {
+  min-height: 10vh;
+  width: 100vw;
+  transform: translateY(800%);
+  position: relative;
+  display: flex;
+  flex-shrink: auto;
+  justify-content: start;
+  align-items: center;
+
+}
+
+.days .buttons {
+
+  background-color: var(--text-color);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+
 .day-list {
-  position: fixed;
-  right: 5%;
-  top: 50%;
-  transform: translate(0, -50%);
+  position: sticky;
+  bottom: 0;
   z-index: 999;
   background-color: var(--text-color);
   color: var(--bg-color);
   padding: 1rem 1.5rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.5rem;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transform: translateX(-200%);
+
 }
+.menu-ac {
+  transform: translateX(0%);
+
+}
+
 .day-list .day-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 1.1rem;
 }
+
+/*--------------------------------------------------------------*/
 .winner-container {
   overflow: hidden;
   display: flex;
@@ -241,4 +272,8 @@ body {
 }
 .lists .participant-icon #user-pen:hover {
   color: var(--dark-green-color);
+}
+
+.participant-body.matchDay .participant {
+  margin: 20px 0;
 }

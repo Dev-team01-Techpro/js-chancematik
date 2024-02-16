@@ -161,21 +161,17 @@ const participant = document.querySelector(".participants");
 participant.addEventListener("click", (e) => {
   let btn = e.target.className;
 
-  if (btn == "fa-solid fa-user-xmark") {
-    dltDiv = e.target.closest(".participants");
+  if (btn =="fa-solid fa-user-xmark") {
+    dltDiv =e.target.closest(".participant");
     dltDiv.remove();
   }
 
-  if (btn == "fa-solid fa-user-pen") {
-    let span = e.target.closest(".participant-name");
-
-    let newName = prompt("Yeni ismi giriniz");
-
-    console.log("yeni isim" + newName);
-
-    span.innerText = newName;
-  }
 });
+ 
+
+
+
+
 
 
 

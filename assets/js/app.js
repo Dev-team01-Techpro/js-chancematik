@@ -9,7 +9,23 @@ const participants = document.querySelector(".participants");
 const dDay = document.querySelector("#dDay");
 const matchDay = document.querySelector(".participant-body.matchDay");
 
-let participantList = {};
+let participantList = {
+  1: "Sinan",
+  2: "Eda",
+  3: "Sule",
+  4: "Tuba",
+  5: "Mehmet",
+  6: "Cahit",
+  7: "Emrullah",
+  8: "Asiye",
+};
+
+window.addEventListener("load", () => {
+  Object.entries(participantList).forEach(([key, value]) => {
+    // console.log(`${key}: ${value}`);
+    katilimciEkle(value);
+  });
+});
 
 //----------------MEHMET-----------------------------
 const getRandomNumber = (obj, type) => {
@@ -29,15 +45,14 @@ const getRandomNumber = (obj, type) => {
 console.log(getRandomNumber(participantList, 1));
 console.log(getRandomNumber(participantList, 2));
 //----------------MEHMET-----------------------------
-const ac=()=>{
-  const dayEl=document.querySelector(".day-list");
+const ac = () => {
+  const dayEl = document.querySelector(".day-list");
   dayEl.classList.add("menu-ac");
-}
-const kapat=()=>{
-  const dayEl=document.querySelector(".day-list");
+};
+const kapat = () => {
+  const dayEl = document.querySelector(".day-list");
   dayEl.classList.remove("menu-ac");
-
-}
+};
 
 //----------------MEHMET-----------------------------
 
@@ -48,6 +63,8 @@ const raffle = () => {
 
   let kisininKeyi = getRandomNumber(participantList, 1);
 
+  console.log("KISININ KEYI", kisininKeyi);
+
   const name = participantList[kisininKeyi];
   winnerName.innerText = name;
 
@@ -55,7 +72,8 @@ const raffle = () => {
     winner.classList.remove("active");
   }, 5000);
 };
-raffle();
+
+// raffle();
 //----------------Emrullah---------------------------
 
 //----------------Tuba-------------------------------
@@ -80,9 +98,7 @@ submitButton.addEventListener("click", (e) => {
   nextId++;
   fullName.value = "";
 
-  Object.entries(participantList).forEach(([key, value]) => {
-    console.log(`${key}: ${value}`);
-  });
+  console.log(participantList);
 });
 
 //----------------Tuba-------------------------------
@@ -222,17 +238,11 @@ const participant = document.querySelector(".participants");
 participant.addEventListener("click", (e) => {
   let btn = e.target.className;
 
-  if (btn =="fa-solid fa-user-xmark") {
-    dltDiv =e.target.closest(".participant");
+  if (btn == "fa-solid fa-user-xmark") {
+    dltDiv = e.target.closest(".participant");
     dltDiv.remove();
   }
-
 });
- 
-
-
-
-
 
 //Delete Button
 const addDeleteButtons = () => {
@@ -242,5 +252,3 @@ const addDeleteButtons = () => {
     });
   });
 };
-
-

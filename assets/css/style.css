@@ -140,7 +140,7 @@ body {
   border-radius: 5px;
   outline: none;
 }
-/*--------------------------------------------------------------*/
+/*---------------------MEHMET----------------------------*/
 .days {
   min-height: 10vh;
   width: 100%;
@@ -152,18 +152,34 @@ body {
   align-items: center;
 
 }
+@media(max-width: 768px) {
+  .days{
+    width: 106px;
+    
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    transform: translate(10%,850%);
+    flex-shrink: auto;
+    bottom: 10px;
+    
+  }
+}
 
 .days .buttons {
 
   background-color: var(--text-color);
-  opacity: 0.8;
+  
   padding: 1rem 1.5rem;
   display: flex;
   justify-content: start;
   align-items: center;
-  transition: width 1s ease-in;
   
+}
 
+.days .buttons button{
+margin-left: 10px;
+  text-align: center;
 }
 
 .day-list {
@@ -179,6 +195,20 @@ body {
   pointer-events: none;
 
 }
+
+@media(max-width: 768px) {
+  .day-list {
+  padding-left: 40px;
+  background-color:var(--text-color);
+  position: fixed;
+  transform: translate(-2%,-26%);
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+ 
+  }
+}
+
 .btn-open{
     position: absolute;
     width: 100%;
@@ -194,10 +224,12 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
-/*--------------------------------------------------------------*/
+
+/*---------------------MEHMET----------------------------*/
+
 .winner-container {
   overflow: hidden;
   display: flex;

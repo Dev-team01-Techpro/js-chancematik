@@ -143,7 +143,7 @@ body {
 /*--------------------------------------------------------------*/
 .days {
   min-height: 10vh;
-  width: 100vw;
+  width: 100%;
   transform: translateY(800%);
   position: relative;
   display: flex;
@@ -156,30 +156,37 @@ body {
 .days .buttons {
 
   background-color: var(--text-color);
+  opacity: 0.8;
   padding: 1rem 1.5rem;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-
+  transition: width 1s ease-in;
+  
 
 }
 
-
 .day-list {
-  position: sticky;
   bottom: 0;
   z-index: 999;
-  background-color: var(--text-color);
   color: var(--bg-color);
   padding: 1rem 1.5rem;
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
-  transform: translateX(-200%);
+  transform: translateX(15%);
+  opacity: 0;
+  pointer-events: none;
 
 }
+.btn-open{
+    position: absolute;
+    width: 100%;
+}
+
 .menu-ac {
-  transform: translateX(0%);
+  opacity: 1;
+  pointer-events:all;
 
 }
 

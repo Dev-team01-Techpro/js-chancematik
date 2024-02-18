@@ -144,18 +144,17 @@ body {
 .days {
   min-height: 10vh;
   width: 100%;
-  transform: translateY(800%);
+  transform: translate(0%,800%);
   position: relative;
   display: flex;
-  flex-shrink: auto;
   justify-content: start;
   align-items: center;
 
 }
+
 @media(max-width: 768px) {
   .days{
     width: 106px;
-    
     flex-direction: column;
     justify-content: start;
     align-items: center;

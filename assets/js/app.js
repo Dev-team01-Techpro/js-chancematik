@@ -56,16 +56,16 @@ const kapat = () => {
 
 //----------------MEHMET-----------------------------
 
-//----------------Emrullah---------------------------
-// raffleInp.addEventListener
+//----------------Emrullah & Duygu---------------------------
+// Emrullah
 const raffle = () => {
   winner.classList.add("active");
 
-  let kisininKeyi = getRandomNumber(participantList, 1);
+  let participantLine = getRandomNumber(participantList, 1);
 
-  console.log("KISININ KEYI", kisininKeyi);
+  console.log("key: " + participantLine);
 
-  const name = participantList[kisininKeyi];
+  const name = participantList[participantLine];
   winnerName.innerText = name;
 
   setTimeout(() => {
@@ -73,7 +73,9 @@ const raffle = () => {
   }, 5000);
 };
 
-// raffle();
+//Duygu
+raffleInp.addEventListener("click", ()=> raffle());
+
 //----------------Emrullah---------------------------
 
 //----------------Tuba-------------------------------

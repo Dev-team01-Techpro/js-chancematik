@@ -54,7 +54,6 @@ console.log(getRandomNumber(participantList, 2));
   btnEl.classList.toggle("btn-open");
  });
 
-
 //----------------MEHMET-----------------------------
 
 //----------------Emrullah---------------------------

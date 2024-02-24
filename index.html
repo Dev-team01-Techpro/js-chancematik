@@ -32,6 +32,7 @@
       <input class="btn input-submit" type="submit" value="Submit" />
     </form>
   </div>
+  
 
   <div class="edit-participant">
     <form class="editBox">
@@ -42,12 +43,12 @@
   </div>
 
   <div class="days">
+    
     <div class="buttons">
-    <button class="btn btn-control " onclick="ac()" type="button">GÜNLER</button>
-    <button class="btn btn-control" onclick="kapat()" type="button">X</button>  
+    <button class="btn btn-control "  type="button" id="btnAc" style="background-color: var(--yellow--color);color: rgb(41, 39, 17)">GÜNLER</button>
     </div>
     
-    <aside class="day-list">
+    <div class="day-list">
     <div class="day-item">
       <input class="checkmark" type="checkbox" id="pazartesi" checked />
       <label for="pazartesi"> Pazartesi</label>
@@ -77,8 +78,8 @@
       <label for="pazar">Pazar</label>
     </div>
     <input onclick="dayCheck()" class="btn" type="submit" value="Submit" />
-    </aside>
-
+    </div>
+    
   </div>
 
   <main class="container">

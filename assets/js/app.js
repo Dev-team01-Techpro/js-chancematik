@@ -50,27 +50,27 @@ const getRandomNumber = (obj, type) => {
 console.log(getRandomNumber(participantList, 1));
 console.log(getRandomNumber(participantList, 2));
 //----------------MEHMET-----------------------------
-const ac = () => {
+
+ document.getElementById("btnAc").addEventListener("click", ()=>{
   const dayEl = document.querySelector(".day-list");
-  dayEl.classList.add("menu-ac");
-};
-const kapat = () => {
-  const dayEl = document.querySelector(".day-list");
-  dayEl.classList.remove("menu-ac");
-};
+  dayEl.classList.toggle("menu-ac");
+
+  const btnEl=document.querySelector(".buttons");
+  btnEl.classList.toggle("btn-open");
+ });
 
 //----------------MEHMET-----------------------------
 
-//----------------Emrullah---------------------------
-// raffleInp.addEventListener
+//----------------Emrullah & Duygu---------------------------
+// Emrullah
 const raffle = () => {
   winner.classList.add("active");
 
-  let kisininKeyi = getRandomNumber(participantList, 1);
+  let participantLine = getRandomNumber(participantList, 1);
 
-  console.log("KISININ KEYI", kisininKeyi);
+  console.log("key: " + participantLine);
 
-  const name = participantList[kisininKeyi];
+  const name = participantList[participantLine];
   winnerName.innerText = name;
 
   setTimeout(() => {
@@ -78,7 +78,9 @@ const raffle = () => {
   }, 5000);
 };
 
-// raffle();
+//Duygu
+raffleInp.addEventListener("click", ()=> raffle());
+
 //----------------Emrullah---------------------------
 
 //----------------Tuba-------------------------------

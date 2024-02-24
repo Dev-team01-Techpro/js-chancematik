@@ -8,6 +8,10 @@ const submitButton = document.querySelector(".input-submit");
 const participants = document.querySelector(".participants");
 const dDay = document.querySelector("#dDay");
 const matchDay = document.querySelector(".participant-body.matchDay");
+const editPrt = document.querySelector(".edit-participant");
+const editBox = document.querySelector(".edit-participant .editBox");
+const editBtn = document.querySelector(".sbtButton");
+const editXMark = document.querySelectorAll(".editBox .fa-solid fa-xmark");
 
 let participantList = {
   1: "Sinan",
@@ -23,8 +27,9 @@ let participantList = {
 window.addEventListener("load", () => {
   Object.entries(participantList).forEach(([key, value]) => {
     // console.log(`${key}: ${value}`);
-    katilimciEkle(value);
+    katilimciEkle(key, value);
   });
+
 });
 
 //----------------MEHMET-----------------------------
@@ -93,8 +98,6 @@ submitButton.addEventListener("click", (e) => {
 
   participantList[nextId] = newName;
 
-  katilimciEkle(newName);
-
   nextId++;
   fullName.value = "";
 
@@ -113,27 +116,8 @@ function exitBox() {
   box.classList.remove("active");
 }
 
-// Cahit
+// Tuba
 //------------------------------------------------------
-
-const dayCheck = () => {
-  let inputs = document.querySelectorAll(".day-list .day-item input");
-
-  let days = [];
-
-  inputs.forEach((input) => {
-    if (input.checked) {
-      days.push(input.id);
-    }
-  });
-
-  return days;
-};
-
-console.log(dayCheck());
-
-// Hangi gunler checked oldugunu kontrol et ve arraya at
-// fonksiyon icereisne yap. Return fonksiyon
 
 //----------------Eda---------------------------------
 
@@ -202,15 +186,38 @@ const matchUp = () => {
 // Eslestirme fonksiyonu
 //----------------Eda----------------------------------
 
+//----------------Cahit----------------------------------
+
+const dayCheck = () => {
+  let inputs = document.querySelectorAll(".day-list .day-item input");
+
+  let days = [];
+
+  inputs.forEach((input) => {
+    if (input.checked) {
+      days.push(input.id);
+    }
+  });
+
+  return days;
+};
+
+console.log(dayCheck());
+
+// Hangi gunler checked oldugunu kontrol et ve arraya at
+// fonksiyon icereisne yap. Return fonksiyon
+
+//Ikinci bolum
+
 const participantBody = document.querySelector(".participant-body");
 participantBody.addEventListener("click", (e) => {
   return e.target.id;
 });
 
-let katilimciEkle = (name) => {
+let katilimciEkle = (id, name) => {
   const participantInfo = document.createElement("div");
   participantInfo.className = "participant";
-  participantInfo.id = `${nextId}`;
+  participantInfo.setAttribute("data-id", id);
   participants.appendChild(participantInfo);
 
   const participantName = document.createElement("span");
@@ -233,16 +240,63 @@ let katilimciEkle = (name) => {
   participantIcon.appendChild(participantIconXmark);
 };
 
+//let katilimcilar = localStorage.getItem("participants");
+//localStorage.setItem("participants", participant);
+
+  
+
+
 const participant = document.querySelector(".participants");
 
 participant.addEventListener("click", (e) => {
   let btn = e.target.className;
 
   if (btn == "fa-solid fa-user-xmark") {
-    dltDiv = e.target.closest(".participant");
+    let dltDiv = e.target.closest(".participant");
+    let id = dltDiv.getAttribute("data-id");
+
+    delete participantList[id];
     dltDiv.remove();
+    // console.log(participantList);
+  }
+
+  if (btn == "fa-solid fa-user-pen") {
+    editPrt.classList.add("active");
+    editBox.classList.add("active");
+
+    let span = e.target
+      .closest(".participant")
+      .querySelector(".participant-name");
+    let dltName = span.innerText;
+
+    let divParticipant = e.target.closest(".participant");
+    let id = divParticipant.getAttribute("data-id");
+
+    let inp = document.querySelector(
+      ".edit-participant .editBox .editInputText"
+    );
+    inp.value = dltName;
+
+    editBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      participantList[id] = inp.value;
+
+      span.innerText = inp.value;
+
+      editPrt.classList.remove("active");
+      editBox.classList.remove("active");
+    });
+
+    const exitBtn = editBtn.parentElement.querySelector(".fa-xmark");
+    exitBtn.addEventListener("click", () => {
+      editPrt.classList.remove("active");
+      editBox.classList.remove("active");
+    });
   }
 });
+
+//----------------Cahit----------------------------------
 
 //Delete Button
 const addDeleteButtons = () => {

@@ -47,7 +47,7 @@ export const dayCheck = () => {
   let days = [];
   let currentDay=[];
 
-const weekday = ["pazar","pazartesi","sali","carsamba","persembe","cuma","cumartesi","pazar","pazartesi","sali","carsamba","persembe","cuma","cumartesi"];
+const weekday = ["pazar","pazartesi","sali","carsamba","persembe","cuma","cumartesi"];
 
 const d = new Date();
 let tomorrow = null;
@@ -57,16 +57,27 @@ let tomorrow = null;
       days.push(input.id);
     }
   });
-  for (let i = 1; i <= 7; i++) {
+  let i=1;
+  let control=true;
+  while (control) {
     tomorrow=weekday[d.getDay()+i];
     days.forEach((day)=>{
-
     if(day===tomorrow){
       currentDay.push(day);
     }
-  })
+    });
+    if(currentDay.length===days.length){
+      control=false;
+    }
+    i++;
+    if(i===7){
+      i=1;
+      i--;
+    }
+    if(i===(-8)) 
+    {control=false};
   }
-
+console.log(currentDay);
   return currentDay;
 };
 // Kullanımı

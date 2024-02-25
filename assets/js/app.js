@@ -1,17 +1,23 @@
-const winner = document.querySelector(".winner");
+import {
+  generateUniqueId,
+  addNewParticipant,
+  matchUp,
+  raffle,
+} from "./functions.js";
+
 const addParticipant = document.querySelector(".add-participant");
 const box = document.querySelector(".box");
-const winnerName = document.querySelector(".winnerName");
+
 const fullName = document.querySelector(".input-text");
 const raffleInp = document.querySelector(".raffle");
 const submitButton = document.querySelector(".input-submit");
-const participants = document.querySelector(".participants");
+
 const dDay = document.querySelector("#dDay");
 const matchDay = document.querySelector(".participant-body.matchDay");
 const editPrt = document.querySelector(".edit-participant");
 const editBox = document.querySelector(".edit-participant .editBox");
 const editBtn = document.querySelector(".sbtButton");
-const editXMark = document.querySelectorAll(".editBox .fa-solid fa-xmark");
+const addPartBtn = document.getElementById("addPart");
 
 let participantList = {
   1: "Sinan",
@@ -27,27 +33,10 @@ let participantList = {
 window.addEventListener("load", () => {
   Object.entries(participantList).forEach(([key, value]) => {
     // console.log(`${key}: ${value}`);
-    katilimciEkle(key, value);
+    addNewParticipant(key, value);
   });
 });
 
-//----------------MEHMET-----------------------------
-const getRandomNumber = (obj, type) => {
-  if (type === 1) {
-    const keys = Object.keys(obj);
-    const randomIndex = Math.floor(Math.random() * keys.length);
-    return keys[randomIndex];
-  } else if (type === 2) {
-    const keys = Object.keys(obj);
-
-    keys.sort(() => Math.random() - 0.5);
-
-    return keys;
-  }
-};
-
-console.log(getRandomNumber(participantList, 1));
-console.log(getRandomNumber(participantList, 2));
 //----------------MEHMET-----------------------------
 
 document.getElementById("btnAc").addEventListener("click", () => {
@@ -59,47 +48,13 @@ document.getElementById("btnAc").addEventListener("click", () => {
 
 //----------------Emrullah & Duygu---------------------------
 // Emrullah
-const raffle = () => {
-  winner.classList.add("active");
-
-  let participantLine = getRandomNumber(participantList, 1);
-
-  console.log("key: " + participantLine);
-
-  const name = participantList[participantLine];
-  winnerName.innerText = name;
-
-  setTimeout(() => {
-    winner.classList.remove("active");
-  }, 5000);
-};
 
 //Duygu
-raffleInp.addEventListener("click", () => raffle());
+raffleInp.addEventListener("click", () => raffle(participantList));
 
 //----------------Emrullah---------------------------
 
 //----------------Tuba-------------------------------
-// fullName value degerini participantList'e ekle
-
-const generateUniqueId = () => {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  const seconds = date.getSeconds();
-
-  const uniqueId = parseInt(
-    `${year}${month}${day}${hours}${minutes}${seconds}`
-  );
-
-  return uniqueId;
-};
-
-// let nextId = Object.keys(participantList).length + 1; // İlk boş ID'yi bul
-// let nextId = generateUniqueId(); // İlk boş ID'yi bul
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
@@ -112,23 +67,24 @@ submitButton.addEventListener("click", (e) => {
   }
 
   participantList[generateUniqueId()] = newName;
-
+  addNewParticipant(generateUniqueId(), newName);
   fullName.value = "";
 
-  console.log(participantList);
+  // DUYGU
+  // OBJE ADI participantList
 });
-
 //----------------Tuba-------------------------------
 
-function addPart() {
+addPartBtn.addEventListener("click", () => {
   addParticipant.classList.add("active");
   box.classList.add("active");
-}
+});
 
-function exitBox() {
+const exitBox = document.querySelector(".add-participant .box .fa-xmark");
+exitBox.addEventListener("click", () => {
   addParticipant.classList.remove("active");
   box.classList.remove("active");
-}
+});
 
 // Tuba
 //------------------------------------------------------
@@ -142,118 +98,16 @@ dDay.addEventListener("click", () => {
     particip.remove();
   });
 
-  matchUp();
+  matchUp(participantList);
 });
 
-// Eslestirme fonksiyonu
-const matchUp = () => {
-  let arr = [];
-  let divArray = [];
-
-  let days = dayCheck();
-  let participantCount = Object.keys(participantList).length;
-  let arrMatch = getRandomNumber(participantList, 2);
-
-  for (let i = 0; i < participantCount; i++) {
-    let participantIndex = arrMatch[i] - 1;
-    let participant = participantList[participantIndex + 1];
-    let dayIndex = i % days.length;
-
-    arr[i] = days[dayIndex] + " : " + participant;
-
-    console.log(arr[i]);
-
-    let newDiv = document.createElement("div");
-    newDiv.className = "participant";
-    newDiv.id = `participant-${i + 1}`;
-    divArray.push(newDiv);
-
-    let newSpan = document.createElement("span");
-    newSpan.className = "participant-name";
-    newSpan.innerText = `${arr[i]}`;
-    newDiv.appendChild(newSpan);
-
-    let iconDiv = document.createElement("div");
-    iconDiv.className = "participant-icon";
-    newDiv.appendChild(iconDiv);
-
-    let iconEl1 = document.createElement("i");
-    iconEl1.className = `fa-solid fa-user-pen edit-day ${i + 1}`;
-    iconEl1.id = `user-pen`;
-    iconDiv.appendChild(iconEl1);
-
-    let iconEl2 = document.createElement("i");
-    iconEl2.className = "fa-solid fa-user-xmark delete-day";
-    iconEl2.id = "xmark";
-    iconDiv.appendChild(iconEl2);
-
-    let container = document.querySelector(".participant-body.matchDay");
-    divArray.forEach((div) => {
-      container.appendChild(div);
-    });
-
-    let dayListDiv = document.querySelector(".participant-day-list");
-    dayListDiv.appendChild(container);
-  }
-  addDeleteButtons();
-};
-// Eslestirme fonksiyonu
 //----------------Eda----------------------------------
 
 //----------------Cahit----------------------------------
-
-const dayCheck = () => {
-  let inputs = document.querySelectorAll(".day-list .day-item input");
-
-  let days = [];
-
-  inputs.forEach((input) => {
-    if (input.checked) {
-      days.push(input.id);
-    }
-  });
-
-  return days;
-};
-
-// Hangi gunler checked oldugunu kontrol et ve arraya at
-// fonksiyon icereisne yap. Return fonksiyon
-
-//Ikinci bolum
-
 const participantBody = document.querySelector(".participant-body");
 participantBody.addEventListener("click", (e) => {
   return e.target.id;
 });
-
-let katilimciEkle = (id, name) => {
-  const participantInfo = document.createElement("div");
-  participantInfo.className = "participant";
-  participantInfo.setAttribute("data-id", id);
-  participants.appendChild(participantInfo);
-
-  const participantName = document.createElement("span");
-  participantName.className = "participant-name";
-  participantName.innerText = `${name}`;
-  participantInfo.appendChild(participantName);
-
-  const participantIcon = document.createElement("div");
-  participantIcon.className = "participant-icon";
-  participantInfo.appendChild(participantIcon);
-
-  const participantIconPen = document.createElement("i");
-  participantIconPen.className = "fa-solid fa-user-pen";
-  participantIconPen.id = "user-pen";
-  participantIcon.appendChild(participantIconPen);
-
-  const participantIconXmark = document.createElement("i");
-  participantIconXmark.className = "fa-solid fa-user-xmark";
-  participantIconXmark.id = "xmark";
-  participantIcon.appendChild(participantIconXmark);
-};
-
-//let katilimcilar = localStorage.getItem("participants");
-//localStorage.setItem("participants", participant);
 
 const participant = document.querySelector(".participants");
 
@@ -266,7 +120,6 @@ participant.addEventListener("click", (e) => {
 
     delete participantList[id];
     dltDiv.remove();
-    // console.log(participantList);
   }
 
   if (btn == "fa-solid fa-user-pen") {
@@ -304,14 +157,4 @@ participant.addEventListener("click", (e) => {
     });
   }
 });
-
 //----------------Cahit----------------------------------
-
-//Delete Button
-const addDeleteButtons = () => {
-  document.querySelectorAll(".delete-day").forEach((item) => {
-    item.addEventListener("click", (e) => {
-      e.target.parentElement.parentElement.remove();
-    });
-  });
-};

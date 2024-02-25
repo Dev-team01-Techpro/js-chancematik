@@ -24,13 +24,13 @@
         <navbar class="navbar">
           <div class="nav-item raffle">Çekiliş Yap</div>
           <div class="nav-item" id="dDay">Günlere Dağıt</div>
-          <div class="nav-item" onclick="addPart()">Katılımcı Ekle</div>
+          <div class="nav-item" id="addPart">Katılımcı Ekle</div>
         </navbar>
       </div>
     </header>
     <div class="add-participant">
       <form class="box">
-        <i class="fa-solid fa-xmark" onclick="exitBox()"></i>
+        <i class="fa-solid fa-xmark"></i>
         <input
           class="input-text"
           type="text"
@@ -114,6 +114,6 @@
 
       <hr />
     </main>
-    <script src="./assets/js/app.js"></script>
+    <script type="module" src="./assets/js/app.js"></script>
   </body>
 </html>

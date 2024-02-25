@@ -29,7 +29,6 @@ window.addEventListener("load", () => {
     // console.log(`${key}: ${value}`);
     katilimciEkle(key, value);
   });
-
 });
 
 //----------------MEHMET-----------------------------
@@ -51,13 +50,10 @@ console.log(getRandomNumber(participantList, 1));
 console.log(getRandomNumber(participantList, 2));
 //----------------MEHMET-----------------------------
 
- document.getElementById("btnAc").addEventListener("click", ()=>{
+document.getElementById("btnAc").addEventListener("click", () => {
   const dayEl = document.querySelector(".day-list");
-  dayEl.classList.toggle("menu-ac");
-
-  const btnEl=document.querySelector(".buttons");
-  btnEl.classList.toggle("btn-open");
- });
+  dayEl.classList.toggle("active");
+});
 
 //----------------MEHMET-----------------------------
 
@@ -79,14 +75,31 @@ const raffle = () => {
 };
 
 //Duygu
-raffleInp.addEventListener("click", ()=> raffle());
+raffleInp.addEventListener("click", () => raffle());
 
 //----------------Emrullah---------------------------
 
 //----------------Tuba-------------------------------
 // fullName value degerini participantList'e ekle
 
-let nextId = Object.keys(participantList).length + 1; // İlk boş ID'yi bul
+const generateUniqueId = () => {
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
+
+  const uniqueId = parseInt(
+    `${year}${month}${day}${hours}${minutes}${seconds}`
+  );
+
+  return uniqueId;
+};
+
+// let nextId = Object.keys(participantList).length + 1; // İlk boş ID'yi bul
+// let nextId = generateUniqueId(); // İlk boş ID'yi bul
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
@@ -98,9 +111,8 @@ submitButton.addEventListener("click", (e) => {
     return;
   }
 
-  participantList[nextId] = newName;
+  participantList[generateUniqueId()] = newName;
 
-  nextId++;
   fullName.value = "";
 
   console.log(participantList);
@@ -204,8 +216,6 @@ const dayCheck = () => {
   return days;
 };
 
-console.log(dayCheck());
-
 // Hangi gunler checked oldugunu kontrol et ve arraya at
 // fonksiyon icereisne yap. Return fonksiyon
 
@@ -244,9 +254,6 @@ let katilimciEkle = (id, name) => {
 
 //let katilimcilar = localStorage.getItem("participants");
 //localStorage.setItem("participants", participant);
-
-  
-
 
 const participant = document.querySelector(".participants");
 

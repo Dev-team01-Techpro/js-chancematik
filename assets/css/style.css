@@ -212,84 +212,68 @@ body {
 }
 /*---------------------MEHMET----------------------------*/
 .days {
-  min-height: 10vh;
-  width: 100%;
-  transform: translate(0%,800%);
-  position: relative;
+  position: fixed;
   display: flex;
-  justify-content: start;
   align-items: center;
+  bottom: 10px;
+  z-index: 999;
 }
-
-@media(max-width: 768px) {
-  .days{
-    width: 106px;
-    flex-direction: column;
-    justify-content: start;
-    align-items: center;
-    transform: translate(10%,850%);
-    flex-shrink: auto;
-    bottom: 10px;
-    
-  }
-}
-
-.days .buttons {
+.days .button {
   background-color: var(--text-color);
   padding: 1rem 1.5rem;
+}
+.days .button .btn {
+  background-color: var(--yellow--color);
   display: flex;
-  justify-content: start;
   align-items: center;
+  color: var(--text-color);
 }
-.days .buttons button{
-  margin-left: 10px;
-  text-align: center;
-}
-.day-list {
-  bottom: 0;
-  z-index: 999;
-  color: var(--bg-color);
-  padding: 1rem 1.5rem;
+
+.days .day-list-container {
+  position: relative;
+  overflow: hidden;
   display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
-  transform: translateX(15%);
-  opacity: 0;
-  pointer-events: none;
-
+  overflow: hidden;
+  height: 4.4rem;
 }
-
-@media(max-width: 768px) {
-  .day-list {
-  padding-left: 40px;
-  background-color:var(--text-color);
-  position: fixed;
-  transform: translate(-2%,-26%);
-  flex-direction: column;
-  opacity: 0;
-  pointer-events: none;
- 
+.days .day-list-container .day-list {
+  display: flex;
+  align-items: center;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  gap: 1rem;
+  position: relative;
+  left: -100%;
+  padding-right: 2rem;
+  transition: left 1s ease-in-out, bottom 1s ease-in-out;
+  -webkit-transition: left 1s ease-in-out, bottom 1s ease-in-out;
+  -moz-transition: left 1s ease-in-out, bottom 1s ease-in-out;
+  -ms-transition: left 1s ease-in-out, bottom 1s ease-in-out;
+  -o-transition: left 1s ease-in-out, bottom 1s ease-in-out;
+}
+.days .day-list-container .day-list.active {
+  left: 0;
+}
+@media (max-width: 820px) {
+  .days {
+    flex-direction: column-reverse;
+  }
+  .days .day-list-container {
+    height: fit-content;
+    width: 100%;
+  }
+  .days .day-list-container .day-list {
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem 0 0 1rem;
+    align-items: flex-start;
+    left: 0%;
+    bottom: -100%;
+  }
+  .days .day-list-container .day-list.active {
+    bottom: 0;
   }
 }
-
-.btn-open{
-    position: absolute;
-    width: 100%;
-}
-
-.menu-ac {
-  transform: translateX(0%);
-  opacity: 1;
-  pointer-events:all;
-}
-
-.day-list .day-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1rem;
-}
-
 
 /*---------------------MEHMET----------------------------*/
 

@@ -139,6 +139,8 @@ export const matchUp = (participantList) => {
     let dayListDiv = document.querySelector(".participant-day-list");
     dayListDiv.appendChild(container);
   }
+  console.log(arr);
+
   addDeleteButtons();
 };
 //----------------Eda--------------------------------
@@ -166,3 +168,9 @@ export const raffle = (participantList) => {
   }, 5000);
 };
 //----------------Emrullah & Duygu---------------------------
+//----------------Tuba--------------------------------
+// LocalStorage den veri cekme fonksiyonu
+// getItemsFromLocalStorage()
+// Export et
+// return object
+//----------------Tuba--------------------------------

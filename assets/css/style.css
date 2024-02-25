@@ -2,7 +2,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: 0;
+  box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
 }
 li {
@@ -233,7 +233,6 @@ body {
   position: relative;
   overflow: hidden;
   display: flex;
-  overflow: hidden;
   height: 4.4rem;
 }
 .days .day-list-container .day-list {

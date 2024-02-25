@@ -7,11 +7,9 @@ import {
 
 const addParticipant = document.querySelector(".add-participant");
 const box = document.querySelector(".box");
-
 const fullName = document.querySelector(".input-text");
 const raffleInp = document.querySelector(".raffle");
 const submitButton = document.querySelector(".input-submit");
-
 const dDay = document.querySelector("#dDay");
 const matchDay = document.querySelector(".participant-body.matchDay");
 const editPrt = document.querySelector(".edit-participant");
@@ -31,6 +29,9 @@ let participantList = {
 };
 
 window.addEventListener("load", () => {
+  // TUBA
+  // functions dosyasinda yazdigin fonksiyonu cagir ve calistir
+
   Object.entries(participantList).forEach(([key, value]) => {
     // console.log(`${key}: ${value}`);
     addNewParticipant(key, value);
@@ -120,6 +121,10 @@ participant.addEventListener("click", (e) => {
 
     delete participantList[id];
     dltDiv.remove();
+    //CAHIT
+    // Localstorageden veri cekme fonksiyonunu cagir.
+    // Objeden veriyi sil
+    // Yeni objeyi Duygunun kaydettigi isimle localstorage set et
   }
 
   if (btn == "fa-solid fa-user-pen") {
@@ -145,6 +150,12 @@ participant.addEventListener("click", (e) => {
       participantList[id] = inp.value;
 
       span.innerText = inp.value;
+
+      //EDA
+      // console.log(id, participantList[id]);
+      // Localstorageden veri cekme fonksiyonunu cagir.
+      // Gelen objedeki ilgili idli ismi guncelle
+      // Yeni objeyi Duygunun kaydettigi isimle localstorage set et
 
       editPrt.classList.remove("active");
       editBox.classList.remove("active");

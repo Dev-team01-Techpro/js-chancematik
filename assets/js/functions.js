@@ -42,17 +42,32 @@ export const generateUniqueId = () => {
 //----------------Cahit------------------------------
 // Hangi gunler checked oldugunu kontrol eder
 export const dayCheck = () => {
-  let inputs = document.querySelectorAll(".day-list .day-item input");
+  let inputs = document.querySelectorAll(".day-list .day-item input");//bu kısımda çalışma yapacağım
 
   let days = [];
+  let currentDay=[];
+
+const weekday = ["pazar","pazartesi","sali","carsamba","persembe","cuma","cumartesi","pazar","pazartesi","sali","carsamba","persembe","cuma","cumartesi"];
+
+const d = new Date();
+let tomorrow = null;
 
   inputs.forEach((input) => {
     if (input.checked) {
       days.push(input.id);
     }
   });
+  for (let i = 1; i <= 7; i++) {
+    tomorrow=weekday[d.getDay()+i];
+    days.forEach((day)=>{
 
-  return days;
+    if(day===tomorrow){
+      currentDay.push(day);
+    }
+  })
+  }
+
+  return currentDay;
 };
 // Kullanımı
 // dayCheck(); // Çağırdığında çalışır

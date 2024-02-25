@@ -72,7 +72,9 @@ submitButton.addEventListener("click", (e) => {
   fullName.value = "";
 
   // DUYGU
-  // OBJE ADI participantList
+  const participantJSON= JSON.stringify(participantList);
+  localStorage.setItem("participantList", participantJSON);
+  
 });
 //----------------Tuba-------------------------------
 

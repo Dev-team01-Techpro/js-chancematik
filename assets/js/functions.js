@@ -189,3 +189,18 @@ export const raffle = (participantList) => {
 // Export et
 // return object
 //----------------Tuba--------------------------------
+export const getItemsFromLocalStorage = () => {
+  try {
+    const storedData = localStorage.getItem('participantJSON'); 
+
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      return parsedData;
+    } else {
+      return {}; 
+    }
+  } catch (error) {
+    console.error('Local Storage\'dan veri alınırken hata oluştu:', error);
+    return {}; 
+  }
+};

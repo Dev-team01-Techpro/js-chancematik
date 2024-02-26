@@ -36,6 +36,9 @@ window.addEventListener("load", () => {
     // console.log(`${key}: ${value}`);
     addNewParticipant(key, value);
   });
+
+  const participantJSON = JSON.stringify(participantList);
+  localStorage.setItem("participantList", participantJSON);
 });
 
 //----------------MEHMET-----------------------------
@@ -72,9 +75,8 @@ submitButton.addEventListener("click", (e) => {
   fullName.value = "";
 
   // DUYGU
-  const participantJSON= JSON.stringify(participantList);
+  const participantJSON = JSON.stringify(participantList);
   localStorage.setItem("participantList", participantJSON);
-  
 });
 //----------------Tuba-------------------------------
 
@@ -123,6 +125,25 @@ participant.addEventListener("click", (e) => {
 
     delete participantList[id];
     dltDiv.remove();
+
+    //----------------Eda----------------------------------
+    //DENEME
+
+    /* const participantJSON= JSON.stringify(participantList);
+localStorage.setItem("participantList", participantJSON); */
+
+    //2.YOL
+
+    /* let jsonList = localStorage.getItem("participantList");
+let scriptList = JSON.parse(jsonList);
+
+delete scriptList[id];
+
+let updatedList = JSON.stringify(scriptList);
+localStorage.setItem("participantList",updatedList) */
+
+    //----------------Eda----------------------------------
+
     //CAHIT
     // Localstorageden veri cekme fonksiyonunu cagir.
     // Objeden veriyi sil
@@ -153,11 +174,18 @@ participant.addEventListener("click", (e) => {
 
       span.innerText = inp.value;
 
+      //----------------Eda----------------------------------
+
       //EDA
       // console.log(id, participantList[id]);
       // Localstorageden veri cekme fonksiyonunu cagir.
       // Gelen objedeki ilgili idli ismi guncelle
       // Yeni objeyi Duygunun kaydettigi isimle localstorage set et
+
+      let JsonFormatParticipantList = JSON.stringify(participantList);
+      localStorage.setItem("participantList", JsonFormatParticipantList);
+
+      //----------------Eda----------------------------------
 
       editPrt.classList.remove("active");
       editBox.classList.remove("active");

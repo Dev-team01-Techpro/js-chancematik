@@ -147,11 +147,6 @@ export const matchUp = (participantList) => {
     iconDiv.className = "participant-icon";
     newDiv.appendChild(iconDiv);
 
-    let iconEl1 = document.createElement("i");
-    iconEl1.className = `fa-solid fa-user-pen edit-day ${i + 1}`;
-    iconEl1.id = `user-pen`;
-    iconDiv.appendChild(iconEl1);
-
     let iconEl2 = document.createElement("i");
     iconEl2.className = "fa-solid fa-user-xmark delete-day";
     iconEl2.id = "xmark";

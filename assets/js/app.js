@@ -17,6 +17,7 @@ const editPrt = document.querySelector(".edit-participant");
 const editBox = document.querySelector(".edit-participant .editBox");
 const editBtn = document.querySelector(".sbtButton");
 const addPartBtn = document.getElementById("addPart");
+const copyrightDate = document.querySelector(".copyright-date");
 
 let participantList = {
   1: "Sinan",
@@ -30,6 +31,8 @@ let participantList = {
 };
 
 window.addEventListener("load", () => {
+  let date = new Date();
+  copyrightDate.innerText = date.getFullYear()
   // TUBA
   // functions dosyasinda yazdigin fonksiyonu cagir ve calistir
   participantList = getItemsFromLocalStorage();
@@ -49,13 +52,32 @@ window.addEventListener("load", () => {
 
 //----------------MEHMET-----------------------------
 
-document.getElementById("btnAc").addEventListener("click", () => {
+document.getElementById("btnAc").addEventListener("click", (e) => {
+  console.log(e.target);
   const dayEl = document.querySelector(".day-list");
+  console.log(dayEl);
   dayEl.classList.toggle("active");
 });
 
 //----------------MEHMET-----------------------------
+//-----------------Şule------------------------------
+document.querySelector(".copyright-link").addEventListener("click", (e) => {
+  const modalContainer = document.getElementById("modal-container");
+  modalContainer.removeAttribute("class");
+  modalContainer.classList.add("one");
 
+  document.body.classList.add("modal-active");
+});
+
+document
+  .getElementById("modal-container")
+  .addEventListener("click", function (e) {
+    if (e.target.classList == "modal-background") {
+      this.classList.add("out");
+      document.body.classList.remove("modal-active");
+    }
+  });
+//----------------------Şule--------------------------------
 //----------------Emrullah & Duygu---------------------------
 // Emrullah
 

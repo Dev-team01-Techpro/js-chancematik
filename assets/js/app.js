@@ -3,6 +3,7 @@ import {
   addNewParticipant,
   matchUp,
   raffle,
+  getItemsFromLocalStorage,
 } from "./functions.js";
 
 const addParticipant = document.querySelector(".add-participant");
@@ -34,11 +35,19 @@ window.addEventListener("load", () => {
   copyrightDate.innerText = date.getFullYear()
   // TUBA
   // functions dosyasinda yazdigin fonksiyonu cagir ve calistir
+  participantList = getItemsFromLocalStorage();
+  console.log(getItemsFromLocalStorage());
+
+  let obj = JSON.stringify(participantList);
+  localStorage.setItem("participantList", obj);
 
   Object.entries(participantList).forEach(([key, value]) => {
     // console.log(`${key}: ${value}`);
     addNewParticipant(key, value);
   });
+
+  const participantJSON = JSON.stringify(participantList);
+  localStorage.setItem("participantList", participantJSON);
 });
 
 //----------------MEHMET-----------------------------
@@ -97,6 +106,7 @@ submitButton.addEventListener("click", (e) => {
   const participantJSON = JSON.stringify(participantList);
   localStorage.setItem("participantList", participantJSON);
 });
+
 //----------------Tuba-------------------------------
 
 addPartBtn.addEventListener("click", () => {
@@ -141,9 +151,16 @@ participant.addEventListener("click", (e) => {
   if (btn == "fa-solid fa-user-xmark") {
     let dltDiv = e.target.closest(".participant");
     let id = dltDiv.getAttribute("data-id");
+    let obj = localStorage.getItem("participantList");
+
+    let strObj = JSON.parse(obj);
+    delete strObj[id];
+    let updated = JSON.stringify(strObj);
+    localStorage.setItem("participantList", updated);
 
     delete participantList[id];
     dltDiv.remove();
+
     //CAHIT
     // Localstorageden veri cekme fonksiyonunu cagir.
     // Objeden veriyi sil
@@ -174,11 +191,12 @@ participant.addEventListener("click", (e) => {
 
       span.innerText = inp.value;
 
-      //EDA
-      // console.log(id, participantList[id]);
-      // Localstorageden veri cekme fonksiyonunu cagir.
-      // Gelen objedeki ilgili idli ismi guncelle
-      // Yeni objeyi Duygunun kaydettigi isimle localstorage set et
+      //----------------Eda----------------------------------
+
+      let JsonFormatParticipantList = JSON.stringify(participantList);
+      localStorage.setItem("participantList", JsonFormatParticipantList);
+
+      //----------------Eda----------------------------------
 
       editPrt.classList.remove("active");
       editBox.classList.remove("active");

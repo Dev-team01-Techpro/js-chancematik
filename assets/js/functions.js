@@ -42,31 +42,49 @@ export const generateUniqueId = () => {
 //----------------Cahit------------------------------
 // Hangi gunler checked oldugunu kontrol eder
 export const dayCheck = () => {
-  let inputs = document.querySelectorAll(".day-list .day-item input");//bu kısımda çalışma yapacağım
+  let inputs = document.querySelectorAll(".day-list .day-item input"); //bu kısımda çalışma yapacağım
 
   let days = [];
-  let currentDay=[];
+  let currentDay = [];
 
-const weekday = ["pazar","pazartesi","sali","carsamba","persembe","cuma","cumartesi","pazar","pazartesi","sali","carsamba","persembe","cuma","cumartesi"];
+  const weekday = [
+    "pazar",
+    "pazartesi",
+    "sali",
+    "carsamba",
+    "persembe",
+    "cuma",
+    "cumartesi",
+  ];
 
-const d = new Date();
-let tomorrow = null;
+  const d = new Date();
+  let tomorrow = null;
 
   inputs.forEach((input) => {
     if (input.checked) {
       days.push(input.id);
     }
   });
-  for (let i = 1; i <= 7; i++) {
-    tomorrow=weekday[d.getDay()+i];
-    days.forEach((day)=>{
-
-    if(day===tomorrow){
-      currentDay.push(day);
+  let i = 1;
+  let control = true;
+  while (control) {
+    tomorrow = weekday[d.getDay() + i];
+    days.forEach((day) => {
+      if (day === tomorrow) {
+        currentDay.push(day);
+      }
+    });
+    if (currentDay.length === days.length) {
+      control = false;
     }
-  })
-  }
 
+    i++;
+
+    if (d.getDay() + i === 7) {
+      i = -d.getDay();
+    }
+  }
+  console.log(currentDay);
   return currentDay;
 };
 // Kullanımı
@@ -136,11 +154,6 @@ export const matchUp = (participantList) => {
     iconDiv.className = "participant-icon";
     newDiv.appendChild(iconDiv);
 
-    let iconEl1 = document.createElement("i");
-    iconEl1.className = `fa-solid fa-user-pen edit-day ${i + 1}`;
-    iconEl1.id = `user-pen`;
-    iconDiv.appendChild(iconEl1);
-
     let iconEl2 = document.createElement("i");
     iconEl2.className = "fa-solid fa-user-xmark delete-day";
     iconEl2.id = "xmark";
@@ -189,3 +202,18 @@ export const raffle = (participantList) => {
 // Export et
 // return object
 //----------------Tuba--------------------------------
+export const getItemsFromLocalStorage = () => {
+  try {
+    const storedData = localStorage.getItem("participantList");
+
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      return parsedData;
+    } else {
+      return {};
+    }
+  } catch (error) {
+    console.error("Local Storage'dan veri alınırken hata oluştu:", error);
+    return {};
+  }
+};

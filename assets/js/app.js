@@ -39,6 +39,9 @@ window.addEventListener("load", () => {
     // console.log(`${key}: ${value}`);
     addNewParticipant(key, value);
   });
+
+  const participantJSON = JSON.stringify(participantList);
+  localStorage.setItem("participantList", participantJSON);
 });
 
 //----------------MEHMET-----------------------------
@@ -132,6 +135,7 @@ participant.addEventListener("click", (e) => {
 
     delete participantList[id];
     dltDiv.remove();
+
     //CAHIT
     // Localstorageden veri cekme fonksiyonunu cagir.
     // Objeden veriyi sil
@@ -162,15 +166,13 @@ participant.addEventListener("click", (e) => {
 
       span.innerText = inp.value;
 
-      //EDA
-      // console.log(id, participantList[id]);
-      // Localstorageden veri cekme fonksiyonunu cagir.
-      // Gelen objedeki ilgili idli ismi guncelle
-      // Yeni objeyi Duygunun kaydettigi isimle localstorage set et
+      //----------------Eda----------------------------------
 
-      
-      let updated =JSON.stringify(participantList);
-      localStorage.setItem("participantList",updated);
+      let JsonFormatParticipantList = JSON.stringify(participantList);
+      localStorage.setItem("participantList", JsonFormatParticipantList);
+
+      //----------------Eda----------------------------------
+
 
       editPrt.classList.remove("active");
       editBox.classList.remove("active");

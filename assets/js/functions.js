@@ -42,42 +42,49 @@ export const generateUniqueId = () => {
 //----------------Cahit------------------------------
 // Hangi gunler checked oldugunu kontrol eder
 export const dayCheck = () => {
-  let inputs = document.querySelectorAll(".day-list .day-item input");//bu kısımda çalışma yapacağım
+  let inputs = document.querySelectorAll(".day-list .day-item input"); //bu kısımda çalışma yapacağım
 
   let days = [];
-  let currentDay=[];
+  let currentDay = [];
 
-const weekday = ["pazar","pazartesi","sali","carsamba","persembe","cuma","cumartesi"];
+  const weekday = [
+    "pazar",
+    "pazartesi",
+    "sali",
+    "carsamba",
+    "persembe",
+    "cuma",
+    "cumartesi",
+  ];
 
-const d = new Date();
-let tomorrow = null;
+  const d = new Date();
+  let tomorrow = null;
 
   inputs.forEach((input) => {
     if (input.checked) {
       days.push(input.id);
     }
   });
-  let i=1;
-  let control=true;
+  let i = 1;
+  let control = true;
   while (control) {
-    tomorrow=weekday[d.getDay()+i];
-    days.forEach((day)=>{
-    if(day===tomorrow){
-      currentDay.push(day);
-    }
+    tomorrow = weekday[d.getDay() + i];
+    days.forEach((day) => {
+      if (day === tomorrow) {
+        currentDay.push(day);
+      }
     });
-    if(currentDay.length===days.length){
-      control=false;
+    if (currentDay.length === days.length) {
+      control = false;
     }
-    
+
     i++;
-    
-    if(d.getDay()+i===7){
-      i=-(d.getDay());
+
+    if (d.getDay() + i === 7) {
+      i = -d.getDay();
     }
-   
   }
-console.log(currentDay);
+  console.log(currentDay);
   return currentDay;
 };
 // Kullanımı
@@ -111,7 +118,6 @@ export const addNewParticipant = (id, name) => {
   participantIconXmark.className = "fa-solid fa-user-xmark";
   participantIconXmark.id = "xmark";
   participantIcon.appendChild(participantIconXmark);
-
 };
 //----------------Cahit------------------------------
 //---------------------------------------------------
@@ -198,16 +204,16 @@ export const raffle = (participantList) => {
 //----------------Tuba--------------------------------
 export const getItemsFromLocalStorage = () => {
   try {
-    const storedData = localStorage.getItem('participantJSON'); 
+    const storedData = localStorage.getItem("participantList");
 
     if (storedData) {
       const parsedData = JSON.parse(storedData);
       return parsedData;
     } else {
-      return {}; 
+      return {};
     }
   } catch (error) {
-    console.error('Local Storage\'dan veri alınırken hata oluştu:', error);
-    return {}; 
+    console.error("Local Storage'dan veri alınırken hata oluştu:", error);
+    return {};
   }
 };

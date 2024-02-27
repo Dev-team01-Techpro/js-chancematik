@@ -32,7 +32,8 @@ let participantList = {
 window.addEventListener("load", () => {
   // TUBA
   // functions dosyasinda yazdigin fonksiyonu cagir ve calistir
-  getItemsFromLocalStorage();
+  participantList = getItemsFromLocalStorage();
+  console.log(getItemsFromLocalStorage());
 
   let obj = JSON.stringify(participantList);
   localStorage.setItem("participantList", obj);
@@ -128,13 +129,12 @@ participant.addEventListener("click", (e) => {
   if (btn == "fa-solid fa-user-xmark") {
     let dltDiv = e.target.closest(".participant");
     let id = dltDiv.getAttribute("data-id");
-    let obj =localStorage.getItem("participantList");
+    let obj = localStorage.getItem("participantList");
 
-    let strObj =JSON.parse(obj);
+    let strObj = JSON.parse(obj);
     delete strObj[id];
-   let updated =JSON.stringify(strObj);
-   localStorage.setItem("participantList",updated); 
-
+    let updated = JSON.stringify(strObj);
+    localStorage.setItem("participantList", updated);
 
     delete participantList[id];
     dltDiv.remove();
@@ -175,7 +175,6 @@ participant.addEventListener("click", (e) => {
       localStorage.setItem("participantList", JsonFormatParticipantList);
 
       //----------------Eda----------------------------------
-
 
       editPrt.classList.remove("active");
       editBox.classList.remove("active");

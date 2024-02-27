@@ -69,13 +69,13 @@ let tomorrow = null;
     if(currentDay.length===days.length){
       control=false;
     }
+    
     i++;
-    if(i===7){
-      i=1;
-      i--;
+    
+    if(d.getDay()+i===7){
+      i=-(d.getDay());
     }
-    if(i===(-8)) 
-    {control=false};
+   
   }
 console.log(currentDay);
   return currentDay;

@@ -32,6 +32,9 @@ window.addEventListener("load", () => {
   // TUBA
   // functions dosyasinda yazdigin fonksiyonu cagir ve calistir
 
+  let obj = JSON.stringify(participantList);
+  localStorage.setItem("participantList", obj);
+
   Object.entries(participantList).forEach(([key, value]) => {
     // console.log(`${key}: ${value}`);
     addNewParticipant(key, value);
@@ -122,27 +125,16 @@ participant.addEventListener("click", (e) => {
   if (btn == "fa-solid fa-user-xmark") {
     let dltDiv = e.target.closest(".participant");
     let id = dltDiv.getAttribute("data-id");
+    let obj =localStorage.getItem("participantList");
+
+    let strObj =JSON.parse(obj);
+    delete strObj[id];
+   let updated =JSON.stringify(strObj);
+   localStorage.setItem("participantList",updated); 
+
 
     delete participantList[id];
     dltDiv.remove();
-
-    //----------------Eda----------------------------------
-    //DENEME
-
-    /* const participantJSON= JSON.stringify(participantList);
-localStorage.setItem("participantList", participantJSON); */
-
-    //2.YOL
-
-    /* let jsonList = localStorage.getItem("participantList");
-let scriptList = JSON.parse(jsonList);
-
-delete scriptList[id];
-
-let updatedList = JSON.stringify(scriptList);
-localStorage.setItem("participantList",updatedList) */
-
-    //----------------Eda----------------------------------
 
     //CAHIT
     // Localstorageden veri cekme fonksiyonunu cagir.
@@ -176,16 +168,11 @@ localStorage.setItem("participantList",updatedList) */
 
       //----------------Eda----------------------------------
 
-      //EDA
-      // console.log(id, participantList[id]);
-      // Localstorageden veri cekme fonksiyonunu cagir.
-      // Gelen objedeki ilgili idli ismi guncelle
-      // Yeni objeyi Duygunun kaydettigi isimle localstorage set et
-
       let JsonFormatParticipantList = JSON.stringify(participantList);
       localStorage.setItem("participantList", JsonFormatParticipantList);
 
       //----------------Eda----------------------------------
+
 
       editPrt.classList.remove("active");
       editBox.classList.remove("active");

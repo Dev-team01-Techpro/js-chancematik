@@ -111,6 +111,7 @@ export const addNewParticipant = (id, name) => {
   participantIconXmark.className = "fa-solid fa-user-xmark";
   participantIconXmark.id = "xmark";
   participantIcon.appendChild(participantIconXmark);
+
 };
 //----------------Cahit------------------------------
 //---------------------------------------------------

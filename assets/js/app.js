@@ -3,6 +3,7 @@ import {
   addNewParticipant,
   matchUp,
   raffle,
+  getItemsFromLocalStorage,
 } from "./functions.js";
 
 const addParticipant = document.querySelector(".add-participant");
@@ -31,6 +32,7 @@ let participantList = {
 window.addEventListener("load", () => {
   // TUBA
   // functions dosyasinda yazdigin fonksiyonu cagir ve calistir
+  getItemsFromLocalStorage();
 
   let obj = JSON.stringify(participantList);
   localStorage.setItem("participantList", obj);
@@ -81,6 +83,7 @@ submitButton.addEventListener("click", (e) => {
   const participantJSON = JSON.stringify(participantList);
   localStorage.setItem("participantList", participantJSON);
 });
+
 //----------------Tuba-------------------------------
 
 addPartBtn.addEventListener("click", () => {

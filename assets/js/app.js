@@ -81,6 +81,8 @@ submitButton.addEventListener("click", (e) => {
 
   const newName = fullName.value;
 
+  fullName.focus();
+
   if (newName === "") {
     alert("Lütfen bir isim girin");
     return;
@@ -100,12 +102,29 @@ submitButton.addEventListener("click", (e) => {
 addPartBtn.addEventListener("click", () => {
   addParticipant.classList.add("active");
   box.classList.add("active");
+  fullName.focus();
 });
 
-const exitBox = document.querySelector(".add-participant .box .fa-xmark");
-exitBox.addEventListener("click", () => {
-  addParticipant.classList.remove("active");
-  box.classList.remove("active");
+const exitBox = document.querySelector(".add-participant");
+
+exitBox.addEventListener("click", (e) => {
+  const closeBox = () => {
+    addParticipant.classList.remove("active");
+    box.classList.remove("active");
+  };
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeBox();
+    }
+  });
+  const className = e.target.className;
+  if (
+    className !== "box active" &&
+    className !== "input-text" &&
+    className !== "btn input-submit"
+  ) {
+    closeBox();
+  }
 });
 
 // Tuba
@@ -148,11 +167,6 @@ participant.addEventListener("click", (e) => {
 
     delete participantList[id];
     dltDiv.remove();
-
-    //CAHIT
-    // Localstorageden veri cekme fonksiyonunu cagir.
-    // Objeden veriyi sil
-    // Yeni objeyi Duygunun kaydettigi isimle localstorage set et
   }
 
   if (btn == "fa-solid fa-user-pen") {

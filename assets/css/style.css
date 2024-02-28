@@ -365,6 +365,7 @@ body {
   width: 100%;
   border-right: 3px solid silver;
   padding-right: 10px;
+  margin-bottom: 1.3rem;
 }
 .lists .participant-list .participant-body .participant {
   display: flex;

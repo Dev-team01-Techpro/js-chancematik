@@ -48,13 +48,13 @@ export const dayCheck = () => {
   let currentDay = [];
 
   const weekday = [
-    "pazar",
-    "pazartesi",
-    "sali",
-    "carsamba",
-    "persembe",
-    "cuma",
-    "cumartesi",
+    "Pazar",
+    "Pazartesi",
+    "Salı",
+    "Çarşamba",
+    "Perşembe",
+    "Cuma",
+    "Cumartesi",
   ];
 
   const d = new Date();
@@ -62,7 +62,8 @@ export const dayCheck = () => {
 
   inputs.forEach((input) => {
     if (input.checked) {
-      days.push(input.id);
+      const labelText = input.nextElementSibling.innerText;
+      days.push(labelText);
     }
   });
   let i = 1;

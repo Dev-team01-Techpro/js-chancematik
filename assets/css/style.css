@@ -56,34 +56,29 @@ body {
 .btn:hover {
   background-color: var(--btn-color-hover);
 }
-.header {
+.menu {
   height: 60px;
   background-color: var(--text-color);
   color: var(--bg-color);
   user-select: none;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-.header .menu {
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  height: 100%;
 }
-.header .menu .logo {
+.menu .logo {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--yellow--color);
 }
-.header .menu .logo img {
-  height: 60px;
-}
-.header .menu .navbar {
+.menu .navbar {
   display: flex;
   gap: 1rem;
-  font-weight: 600;
+  cursor: pointer;
   height: 100%;
 }
-.header .menu .navbar .nav-item {
+.menu .navbar .nav-item {
   height: 100%;
   padding: 0 1rem;
   display: flex;
@@ -91,12 +86,68 @@ body {
   justify-content: center;
   cursor: pointer;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  list-style: none;
 }
-.header .menu .navbar .nav-item:hover {
+.menu .navbar .nav-item:hover {
   background-color: var(--yellow--color);
   color: var(--text-color);
 }
-
+.menu .navbar .nav-item.active,
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+.hamburger .bar {
+  background-color: #edf2f4;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  transition: all 0.3s ease-in-out;
+}
+@media (max-width: 768px) {
+  .menu .navbar {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    position: fixed;
+    top: 60px;
+    background-color: var(--text-color);
+    right: -100%;
+    transition: all 0.3s ease-in-out;
+    width: 50%;
+    height: 100vh;
+    z-index: 1;
+  }
+  .menu .navbar .nav-item {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.5s ease-in-out;
+    -webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -ms-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+  }
+  .menu .navbar.active {
+    right: 0;
+  }
+  .hamburger {
+    display: block;
+  }
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
 /* --------------------Cahit------------------------------------ */
 
 .edit-participant {
@@ -277,10 +328,6 @@ body {
     width: 100%;
     padding: 0 0 1rem 1rem;
     align-items: flex-start;
-    top: -100%;
-  }
-  .days .day-list-container .day-list.active {
-    top: 0;
   }
 }
 /*---------------------MEHMET----------------------------*/
@@ -366,7 +413,17 @@ body {
 .lists .participant-icon #user-pen:hover {
   color: var(--dark-green-color);
 }
-
+@media (max-width: 820px) {
+  .lists {
+    flex-direction: column;
+  }
+  .lists .participant-list {
+    border: none;
+  }
+  .lists .participant-day-list {
+    margin-bottom: 1rem;
+  }
+}
 .participant-body.matchDay .participant {
   margin: 20px 0;
 }

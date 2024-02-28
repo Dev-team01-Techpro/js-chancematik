@@ -32,7 +32,7 @@ let participantList = {
 
 window.addEventListener("load", () => {
   let date = new Date();
-  copyrightDate.innerText = date.getFullYear()
+  copyrightDate.innerText = date.getFullYear();
   // TUBA
   // functions dosyasinda yazdigin fonksiyonu cagir ve calistir
   participantList = getItemsFromLocalStorage();
@@ -210,3 +210,11 @@ participant.addEventListener("click", (e) => {
   }
 });
 //----------------Cahit----------------------------------
+
+const hamburger = document.querySelector(".hamburger");
+const navbar = document.querySelector(".navbar");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navbar.classList.toggle("active");
+});

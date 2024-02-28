@@ -19,16 +19,7 @@ const editBtn = document.querySelector(".sbtButton");
 const addPartBtn = document.getElementById("addPart");
 const copyrightDate = document.querySelector(".copyright-date");
 
-let participantList = {
-  1: "Sinan",
-  2: "Eda",
-  3: "Sule",
-  4: "Tuba",
-  5: "Mehmet",
-  6: "Cahit",
-  7: "Emrullah",
-  8: "Asiye",
-};
+let participantList = {};
 
 window.addEventListener("load", () => {
   let date = new Date();
@@ -36,7 +27,6 @@ window.addEventListener("load", () => {
   // TUBA
   // functions dosyasinda yazdigin fonksiyonu cagir ve calistir
   participantList = getItemsFromLocalStorage();
-  console.log(getItemsFromLocalStorage());
 
   let obj = JSON.stringify(participantList);
   localStorage.setItem("participantList", obj);
@@ -53,9 +43,7 @@ window.addEventListener("load", () => {
 //----------------MEHMET-----------------------------
 
 document.getElementById("btnAc").addEventListener("click", (e) => {
-  console.log(e.target);
   const dayEl = document.querySelector(".day-list");
-  console.log(dayEl);
   dayEl.classList.toggle("active");
 });
 

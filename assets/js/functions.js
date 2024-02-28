@@ -84,7 +84,7 @@ export const dayCheck = () => {
       i = -d.getDay();
     }
   }
-  console.log(currentDay);
+
   return currentDay;
 };
 // Kullanımı
@@ -138,8 +138,6 @@ export const matchUp = (participantList) => {
 
     arr[i] = days[dayIndex] + " : " + participant;
 
-    // console.log(arr[i]);
-
     let newDiv = document.createElement("div");
     newDiv.className = "participant";
     newDiv.id = `participant-${i + 1}`;
@@ -167,7 +165,6 @@ export const matchUp = (participantList) => {
     let dayListDiv = document.querySelector(".participant-day-list");
     dayListDiv.appendChild(container);
   }
-  console.log(arr);
 
   addDeleteButtons();
 };
@@ -188,7 +185,11 @@ export const raffle = (participantList) => {
 
   let participantLine = getRandomNumber(participantList, 1);
 
-  const name = participantList[participantLine];
+  let name = participantList[participantLine];
+
+  if (name === undefined) {
+    name = "Katılımcı bulunamadı";
+  }
   winnerName.innerText = name;
 
   setTimeout(() => {
